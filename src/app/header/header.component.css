@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Overpass', sans-serif;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
+  width: 80%;
+  background-color: white;
+}
+
+.logo-wrapper {
+  margin-left: 3em;
+}
+
+.logo-wrapper a {
+  display: block;
+  height: 3em;
+  width: 3em;
+  background-image: url(src/assets/icons/logo.png);
+  background-size: cover;
+  margin-right: 1em;
+}
+
+.logo-wrapper p {
+  text-transform: uppercase;
+  font-size: 1.3em;
+}
+
+.user-wrapper {
+  margin-right: 3em;
+}
+
+#user {
+  background-image: url(src/assets/icons/user.svg);
+  background-size: cover;
+  height: 3em;
+  width: 3em;
+  /*margin-right: 1em;*/
+
+}
+
+#basket {
+  background-image: url(src/assets/icons/cart.png);
+  background-size: cover;
+  height: 2.5em;
+  width: 2.5em;
+  margin-left: 1em;
+
+}
+
+.search-wrapper input {
+  border-radius: 50px;
+  line-height: 2em;
+  width: 25vw;
+  min-width: 10em;
+  margin-right: 5em;
+}
+
+.logo-wrapper, .user-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav {
+  line-height: 5vh;
+  min-height: 1.5em;
+  width: 100%;
+  background-color: rgba(33, 127, 215, 1);
+  /*padding-left: 10%;*/
+
+}
+
+.nav-wrapper {
+  margin-left: 9vw;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  list-style: none;
+  min-height: 1.5em;
+}
+
+nav ul li {
+  margin-left: 1em;
+}
+
+nav a {
+  display: block;
+  text-transform: uppercase;
+  margin-left: 2em;
+  min-width: 110%;
+  min-height: 1.5em;
+  font-size: 1em;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease-out;
+}
+nav ul li a:hover {
+  border-radius: 10px;
+  background: #344886;
+  cursor: pointer;
+}
+
+.active {
+  border-radius: 10px;
+  background: #344886;
+}
+
+
