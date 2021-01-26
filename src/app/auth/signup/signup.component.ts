@@ -10,14 +10,14 @@ import {AuthService} from '../services/auth.service';
 })
 export class SignupComponent implements OnInit {
 
-  signupRequestPayload: SignupRequestPayload;
+  // signupRequestPayload: SignupRequestPayload;
   signupForm: FormGroup;
 
   constructor(private authService: AuthService) {
-    this.signupRequestPayload = {
-      username: '',
-      password: ''
-    };
+    // this.signupRequestPayload = {
+    //   username: '',
+    //   password: ''
+    // };
   }
 
   ngOnInit(): void {
@@ -28,12 +28,17 @@ export class SignupComponent implements OnInit {
   }
 
   signup(): void{
-    this.signupRequestPayload.username = this.signupForm.get('username').value;
-    this.signupRequestPayload.password = this.signupForm.get('password').value;
+    // console.log(this.signupForm.value);
+    // this.signupRequestPayload.username = this.signupForm.get('username').value;
+    // this.signupRequestPayload.password = this.signupForm.get('password').value;
 
-    this.authService.signup(this.signupRequestPayload)
+    this.authService.signup(this.signupForm.value)
       .subscribe(data => {
         console.log(data);
       });
+    this.signupForm.patchValue( {
+      username: '',
+      password: ''
+    });
   }
 }
