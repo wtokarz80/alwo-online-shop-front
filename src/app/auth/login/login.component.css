@@ -5,7 +5,7 @@
   font-family: 'Overpass', sans-serif;
 }
 
-.register-section {
+.login-section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,4 +54,11 @@
 .existing-user a {
   margin-left: 0.5em;
   color: brown;
+}
+
+.login-failed-text {
+  text-align: center;
+  margin-top: 5px;
+  font-weight: bold;
+  color: aliceblue;
 }
