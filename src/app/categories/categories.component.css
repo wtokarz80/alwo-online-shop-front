@@ -1,0 +1,26 @@
+p {position: absolute;
+  width: 197px;
+  height: 30px;
+  left: 229px;
+  top: 287px;
+
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 158%;
+  /* or 38px */
+
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.0075em;
+
+  color: #383737;}
+
+hr {position: absolute;
+  width: 59px;
+  height: 0px;
+  left: 229px;
+  top: 329px;
+
+  border: 2px solid rgba(0, 0, 0, 0.3);}
