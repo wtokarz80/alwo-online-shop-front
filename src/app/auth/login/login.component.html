@@ -35,6 +35,12 @@
         <button type="submit" class="sign-up">Login</button>
         <span class="existing-user">New User? <a routerLink="/sign-up">Sign-up</a></span>
       </div>
+      <div class="login-failed" *ngIf='this.isError'>
+        <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>
+      </div>
+      <div class="login-failed" [ngStyle]="{'background-color': 'green'}" *ngIf="this.registerSuccessMessage">
+        <p class="register-success-text">{{registerSuccessMessage}}</p>
+      </div>
 
     </form>
   </div>
