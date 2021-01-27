@@ -11,10 +11,17 @@
     </div>
     <div class="user-wrapper">
       <div class="user">
-        <div class="user-submenu">
+
+        <div class="user-submenu" *ngIf="!isLoggedIn">
           <ul>
             <li><a routerLink="/sign-up">Register</a></li>
             <li><a routerLink="/login">Login</a></li>
+          </ul>
+        </div>
+        <div class="user-submenu" *ngIf="isLoggedIn">
+          <ul>
+            <li><a (click)="goToUserProfile()">User Profile</a></li>
+            <li><a (click)="logout()">Logout</a></li>
           </ul>
         </div>
 
