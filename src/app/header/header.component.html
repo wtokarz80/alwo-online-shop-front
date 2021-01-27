@@ -10,23 +10,100 @@
       <input id="title" name="title" type="text" placeholder="search..."/>
     </div>
     <div class="user-wrapper">
-      <a id="user" routerLink="/sign-up"></a>
+      <div class="user">
+        <div class="user-submenu">
+          <ul>
+            <li><a routerLink="/sign-up">Register</a></li>
+            <li><a routerLink="/login">Login</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+<!--      <a class="user" routerLink="/sign-up"></a>-->
+<!--      <a class="user" routerLink="/login"></a>-->
       <a id="basket" routerLink="/basket"></a>
     </div>
   </header>
 
-  <nav>
-      <div class="nav-wrapper">
-        <ul class="ul-wrapper">
-          <li><a routerLink="/home" routerLinkActive="active">home</a></li>
-          <li><a routerLink="/books" routerLinkActive="active">books</a></li>
-          <li><a routerLink="/audiobooks" routerLinkActive='active'>audiobooks</a></li>
-          <li><a routerLink="/ebooks" routerLinkActive='active'>ebooks</a></li>
-          <li><a routerLink="/bestsellers" routerLinkActive="active">bestsellers</a></li>
-          <li><a routerLink="/new-releases" routerLinkActive="active">new releases</a></li>
-          <li><a routerLink="/contact" routerLinkActive="active">contact</a></li>
-        </ul>
-      </div>
+<!--  <nav>-->
+<!--      <div class="nav-wrapper">-->
+<!--        <ul class="ul-wrapper">-->
+<!--          <li><a routerLink="/home" routerLinkActive="active">home</a></li>-->
+<!--          <li><a routerLink="/books" routerLinkActive="active">books</a></li>-->
+<!--          <li><a routerLink="/audiobooks" routerLinkActive='active'>audiobooks</a></li>-->
+<!--          <li><a routerLink="/ebooks" routerLinkActive='active'>ebooks</a></li>-->
+<!--          <li><a routerLink="/bestsellers" routerLinkActive="active">bestsellers</a></li>-->
+<!--          <li><a routerLink="/new-releases" routerLinkActive="active">new releases</a></li>-->
+<!--          <li><a routerLink="/contact" routerLinkActive="active">contact</a></li>-->
+<!--        </ul>-->
+<!--      </div>-->
+<!--  </nav>-->
+
+  <nav class="menu-bar">
+    <ul>
+      <li><a routerLink="/home" routerLinkActive="active">Home</a> </li>
+      <li><a routerLink="/books" routerLinkActive="active">Books</a>
+        <div class="sub-menu-1">
+          <ul>
+            <li class="hover-me"><a href="#"><span class="fa-angle-right">Category-1 ></span></a>
+              <div class="sub-menu-2">
+                <ul>
+                  <li><a href="#">Subcategory-1</a></li>
+                  <li><a href="#">Subcategory-2</a></li>
+                  <li><a href="#">Subcategory-3</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="hover-me"><a href="#"><span class="fa-angle-right">Category-2 ></span></a>
+              <div class="sub-menu-2">
+                <ul>
+                  <li><a href="#">Subcategory-1</a></li>
+                  <li><a href="#">Subcategory-2</a></li>
+                  <li><a href="#">Subcategory-3</a></li>
+                  <li><a href="#">Subcategory-4</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="hover-me"><a href="#"><span class="fa-angle-right">Category-3 ></span></a>
+              <div class="sub-menu-2">
+                <ul>
+                  <li><a href="#">Subcategory-1</a></li>
+                  <li><a href="#">Subcategory-2</a></li>
+                  <li><a href="#">Subcategory-3</a></li>
+                  <li><a href="#">Subcategory-4</a></li>
+                  <li><a href="#">Subcategory-5</a></li>
+                  <li><a href="#">Subcategory-6</a></li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li><a routerLink="/audiobooks" routerLinkActive='active'>Audiobooks</a>
+        <div class="sub-menu-1">
+          <ul>
+            <li><a href="#">Subcategory-1</a></li>
+            <li><a href="#">Subcategory-2</a></li>
+            <li><a href="#">Subcategory-3</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a routerLink="/ebooks" routerLinkActive='active'>Ebooks</a>
+        <div class="sub-menu-1">
+          <ul>
+            <li><a href="#">Subcategory-1</a></li>
+            <li><a href="#">Subcategory-2</a></li>
+            <li><a href="#">Subcategory-3</a></li>
+          </ul>
+        </div>
+      </li>
+      <li><a routerLink="/bestsellers" routerLinkActive="active">bestsellers</a></li>
+      <li><a routerLink="/new-releases" routerLinkActive="active">new releases</a>
+      <li><a routerLink="/contact" routerLinkActive="active">contact</a>
+
+      </li>
+    </ul>
   </nav>
 
 </div>

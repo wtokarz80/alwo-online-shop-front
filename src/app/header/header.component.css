@@ -40,18 +40,7 @@ header {
   font-size: 1.3em;
 }
 
-.user-wrapper {
-  margin-right: 3em;
-}
-
-#user {
-  background-image: url(src/assets/icons/user.svg);
-  background-size: cover;
-  height: 3em;
-  width: 3em;
-  /*margin-right: 1em;*/
-
-}
+       /*BASKET*/
 
 #basket {
   background-image: url(src/assets/icons/cart.png);
@@ -77,53 +66,201 @@ header {
   align-items: center;
 }
 
-nav {
-  line-height: 5vh;
-  min-height: 1.5em;
-  width: 100%;
-  background-color: rgba(33, 127, 215, 1);
-  /*padding-left: 10%;*/
+/*USER LOGIN/REGISTER*/
 
+.user-wrapper {
+  margin-right: 3em;
 }
 
-.nav-wrapper {
-  margin-left: 9vw;
+.user {
+  background-image: url(src/assets/icons/user.svg);
+  background-size: cover;
+  height: 3em;
+  width: 3em;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+  /*margin-right: 1em;*/
 }
 
-nav ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: flex-start;
-  list-style: none;
-  min-height: 1.5em;
-}
-
-nav ul li {
-  margin-left: 1em;
-}
-
-nav a {
-  display: block;
-  text-transform: uppercase;
-  margin-left: 2em;
-  min-width: 110%;
-  min-height: 1.5em;
-  font-size: 1em;
-  color: white;
-  text-decoration: none;
-  text-align: center;
+.user-submenu {
+  display: none;
+  border-radius: 5px;
   transition: all 0.3s ease-out;
 }
-nav ul li a:hover {
-  border-radius: 10px;
-  background: #344886;
+
+.user-submenu ul {
+  list-style: none;
+  color: white;
+}
+
+.user-submenu ul li {
+  display: block;
+  margin: 5px;
+  transition: all 0.3s ease-out;
+
+}
+
+.user-submenu ul li a {
+  display: block;
+  text-decoration: none;
+  padding: 5px 60px 5px 40px;
+  color: black;
+}
+
+.user-submenu ul li:hover {
+  background: #b6c7b1;
+  border-radius: 5px;
   cursor: pointer;
+
 }
 
-.active {
-  border-radius: 10px;
-  background: #344886;
+.user:hover .user-submenu {
+  display: block;
+  position: absolute;
+  background: white;
+  margin-top: 45px;
+  margin-left: -80px;
+
 }
 
+/*navigation version 2*/
 
+.menu-bar {
+  background: rgba(33, 127, 215, 1);
+  text-align: center;
+  width: 80%;
+  min-width: 1000px;
+  font-size: 1em;
+  text-transform: uppercase;
+
+}
+
+.menu-bar ul {
+  display: inline-flex;
+  list-style: none;
+  color: white;
+  transition: all 0.3s ease-out;
+
+}
+
+.menu-bar ul li {
+  /*width: 130px;*/
+  margin: 10px;
+  padding: 10px;
+  transition: all 0.3s ease-out;
+}
+
+.menu-bar ul li a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease-out;
+}
+
+.active-2, .menu-bar ul li:hover {
+  background: #2bab0d;
+  border-radius: 3px;
+
+}
+
+.sub-menu-1 {
+  display: none;
+  transition: all 0.3s ease-out;
+}
+
+.menu-bar ul li:hover .sub-menu-1 {
+  display: block;
+  position: absolute;
+  background: rgba(33, 127, 215, 1);
+  margin-top: 10px;
+  margin-left: -15px;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul {
+  display: block;
+  margin: 10px;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul li {
+  width: 150px;
+  padding: 10px;
+  border-bottom: 1px dotted white;
+  background: transparent;
+  border-radius: 0;
+  text-align: left;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul li:last-child {
+  border-bottom: none;
+}
+
+.menu-bar ul li:hover .sub-menu-1 ul li a:hover {
+  color: #b2ff00;
+}
+
+.sub-menu-2 {
+  display: none;
+  transition: all 0.3s ease-out;
+}
+
+.sub-menu-2 ul li a {
+  transition: all 0.3s ease-out;
+}
+
+.hover-me:hover .sub-menu-2 {
+  position: absolute;
+  display: block;
+  margin-top: -40px;
+  margin-left: 140px;
+  background: rgba(33, 127, 215, 1);
+
+}
+
+/*navigation version 1*/
+/*nav {*/
+/*  line-height: 5vh;*/
+/*  min-height: 1.5em;*/
+/*  width: 100%;*/
+/*  background-color: rgba(33, 127, 215, 1);*/
+/*  !*padding-left: 10%;*!*/
+
+/*}*/
+
+/*.nav-wrapper {*/
+/*  margin-left: 9vw;*/
+/*}*/
+
+/*nav ul {*/
+/*  display: flex;*/
+/*  flex-direction: row;*/
+/*  justify-content: flex-start;*/
+/*  align-items: flex-start;*/
+/*  list-style: none;*/
+/*  min-height: 1.5em;*/
+/*}*/
+
+/*nav ul li {*/
+/*  margin-left: 1em;*/
+/*}*/
+
+/*nav a {*/
+/*  display: block;*/
+/*  text-transform: uppercase;*/
+/*  margin-left: 2em;*/
+/*  min-width: 110%;*/
+/*  min-height: 1.5em;*/
+/*  font-size: 1em;*/
+/*  color: white;*/
+/*  text-decoration: none;*/
+/*  text-align: center;*/
+/*  transition: all 0.3s ease-out;*/
+/*}*/
+/*nav ul li a:hover {*/
+/*  border-radius: 10px;*/
+/*  background: #344886;*/
+/*  cursor: pointer;*/
+/*}*/
+
+/*.active {*/
+/*  border-radius: 10px;*/
+/*  background: #344886;*/
+/*}*/
