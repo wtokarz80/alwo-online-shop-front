@@ -18,12 +18,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import {HttpClientModule} from '@angular/common/http';
-import { MainComponent } from './main/main.component';
-import { CategoriesComponent } from './categories/categories.component';
-import { ProductsComponent } from './products/products.component';
-import { ProductComponent } from './product/product.component';
-import { PaginationComponent } from './pagination/pagination.component';
+import {CategoryService} from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -52,7 +47,8 @@ import { PaginationComponent } from './pagination/pagination.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    CategoryService
   ],
   bootstrap: [AppComponent]
 })
