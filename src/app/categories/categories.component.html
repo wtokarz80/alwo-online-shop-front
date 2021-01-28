@@ -1,8 +1,7 @@
-  <p> CATEGORY </p>
-  <hr [size]="2" [width]="20">
-  <ul class="categories">
-    <li *ngFor="let category of categories">
-      {{category}}
-       </li>
-  </ul>
-
+<header class="header"> CATEGORY </header>
+<hr class="header-separator">
+<ul>
+  <li *ngFor="let category of categories; let last = last, let first = first"
+      [ngClass]="{'category-wrapper': true, 'bottom-bordered': !last}">
+    <p class="category-item">{{ category.categoryName }}</p>
+</ul>
