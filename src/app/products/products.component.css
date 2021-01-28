@@ -1,0 +1,8 @@
+:host {
+  margin-left: 37px;
+}
+
+.products-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
