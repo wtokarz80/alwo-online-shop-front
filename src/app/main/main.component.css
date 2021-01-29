@@ -1,0 +1,12 @@
+.content {
+  display: flex;
+  margin: 25px 35px;
+}
+
+.categories {
+  flex: 1;
+}
+
+.products {
+  flex: 3;
+}

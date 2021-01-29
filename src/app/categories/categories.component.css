@@ -1,0 +1,44 @@
+:host {
+  margin-top: 69px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.header {
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.header-separator {
+  width: 20%;
+  margin-left: 0;
+  height: 2px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.category-wrapper {
+  margin-right: 30%;
+  padding: 15px 0 15px;
+}
+
+.category-item {
+  margin: 0;
+  font-size: 16px;
+}
+
+.bottom-bordered {
+  border-bottom: rgba(0, 0, 0, 0.08) solid 2px;
+}
+
+.selected {
+  border-bottom-color: rgb(167, 30, 30);
+}
+
+.selected .category-item {
+  font-weight: 700;
+  font-size: 18px;
+}
