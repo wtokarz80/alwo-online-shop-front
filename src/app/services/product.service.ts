@@ -2,23 +2,41 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Product} from '../models/product';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
+import {environment} from '../../environments/environment';
+import {Category} from '../models/category';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  productsUrl: string;
-  constructor(private http: HttpClient) {
-    this.productsUrl = 'http://localhost:8080/alwo/products';
+  public selectedCategory: string;
+  public products: Product[];
+  constructor(public http: HttpClient) {
   }
 
-  public findAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(this.productsUrl).pipe(
-      map((products: Product[]) => products.map(
-        (product, index) => ({...product, imgSrc: `${index}.jpg`}))
-      )
+  public onCategoryClick(chosenCategory: string): void {
+      this.selectedCategory = chosenCategory;
+      this.params().subscribe();
+  }
+
+  public getAllProducts(): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.API_URL}/products`).pipe(
+      map((products: Product[]) => products.map((product, index) => ({...product, imgSrc: `${index}.jpg`}))),
+      tap(products => this.products = products)
     );
+  }
+
+  public getAllCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${environment.API_URL}/categories`);
+  }
+
+  public params(): Observable<Product[]> {
+    // todo: myParams = myParams.append('categories', 'Fiction');
+    return this.http.get<Product[]>(`${environment.API_URL}/products?categories=${this.selectedCategory}`)
+      .pipe(
+        map((products: Product[]) => products.map((product, index) => ({...product, imgSrc: `${index}.jpg`}))),
+        tap(products => this.products = products));
   }
 }
