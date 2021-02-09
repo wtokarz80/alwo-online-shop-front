@@ -18,7 +18,6 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
-import {CategoryService} from './services/category.service';
 
 @NgModule({
   declarations: [
@@ -47,8 +46,7 @@ import {CategoryService} from './services/category.service';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    },
-    CategoryService
+    }
   ],
   bootstrap: [AppComponent]
 })
