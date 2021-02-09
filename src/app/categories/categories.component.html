@@ -2,6 +2,7 @@
 <hr class="header-separator">
 <ul>
   <li *ngFor="let category of categories; let last = last, let first = first"
-      [ngClass]="{'category-wrapper': true, 'bottom-bordered': !last}">
-    <p class="category-item">{{ category.categoryName }}</p>
+      [ngClass]="{'category-wrapper': true, 'bottom-bordered': !last, 'selected': productService.selectedCategory === category.categoryName}">
+    <p (click)="selectCategory(category); " class="category-item">{{ category.categoryName }}</p>
+  </li>
 </ul>
