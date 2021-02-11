@@ -9,6 +9,7 @@
       <label for="title"></label>
       <input id="title" name="title" type="text" placeholder="search..."/>
     </div>
+
     <div class="user-wrapper">
       <div class="user">
 
@@ -20,32 +21,21 @@
         </div>
         <div class="user-submenu" *ngIf="isLoggedIn">
           <ul>
+            <li *ngIf="userRole === 'ROLE_ADMIN'"><a (click)="goToAdminPanel()">Admin panel</a></li>
             <li><a (click)="goToUserProfile()">User Profile</a></li>
             <li><a (click)="logout()">Logout</a></li>
           </ul>
         </div>
-
       </div>
 
-<!--      <a class="user" routerLink="/sign-up"></a>-->
-<!--      <a class="user" routerLink="/login"></a>-->
-      <a id="basket" routerLink="/basket"></a>
+      <div class="basket">
+        <a id="basket-icon" routerLink="/basket"></a>
+        <p id="basket-amount" *ngIf="basketAmount !== 0">{{basketAmount}}</p>
+      </div>
+
     </div>
   </header>
 
-<!--  <nav>-->
-<!--      <div class="nav-wrapper">-->
-<!--        <ul class="ul-wrapper">-->
-<!--          <li><a routerLink="/home" routerLinkActive="active">home</a></li>-->
-<!--          <li><a routerLink="/books" routerLinkActive="active">books</a></li>-->
-<!--          <li><a routerLink="/audiobooks" routerLinkActive='active'>audiobooks</a></li>-->
-<!--          <li><a routerLink="/ebooks" routerLinkActive='active'>ebooks</a></li>-->
-<!--          <li><a routerLink="/bestsellers" routerLinkActive="active">bestsellers</a></li>-->
-<!--          <li><a routerLink="/new-releases" routerLinkActive="active">new releases</a></li>-->
-<!--          <li><a routerLink="/contact" routerLinkActive="active">contact</a></li>-->
-<!--        </ul>-->
-<!--      </div>-->
-<!--  </nav>-->
 
   <nav class="menu-bar">
     <ul>

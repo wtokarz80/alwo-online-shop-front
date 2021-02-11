@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
@@ -18,6 +18,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     CategoriesComponent,
     ProductsComponent,
     ProductComponent,
-    PaginationComponent
+    PaginationComponent,
+    BasketComponent
 
   ],
     imports: [
@@ -39,7 +41,8 @@ import { PaginationComponent } from './pagination/pagination.component';
       HttpClientModule,
       NgxWebstorageModule.forRoot(),
       BrowserAnimationsModule,
-      ToastrModule.forRoot()
+      ToastrModule.forRoot(),
+      FormsModule
     ],
   providers: [
     {
