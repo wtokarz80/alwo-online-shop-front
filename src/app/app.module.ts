@@ -19,6 +19,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -31,19 +32,20 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
     ProductsComponent,
     ProductComponent,
     PaginationComponent,
-    ProductDetailsComponent
+    ProductDetailsComponent,
+    BasketComponent
 
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgxWebstorageModule.forRoot(),
-    BrowserAnimationsModule,
-    ToastrModule.forRoot(),
-    FormsModule
-  ],
+    imports: [
+      BrowserModule,
+      AppRoutingModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+      NgxWebstorageModule.forRoot(),
+      BrowserAnimationsModule,
+      ToastrModule.forRoot(),
+      FormsModule
+    ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

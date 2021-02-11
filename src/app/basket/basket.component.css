@@ -1,0 +1,85 @@
+:host {
+  margin-left: 37px;
+}
+
+.title {
+  margin: 30px auto;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.del-field {
+  width: 5%;
+}
+.product-field {
+  width: 45%;
+}
+.price-field {
+  width: 15%;
+}
+.quantity-field {
+  width: 15%;
+}
+
+.value-field {
+  width: 20%;
+}
+
+.product-name {
+  margin-left: 5em;
+  line-height: 50px;
+}
+
+.container {
+  margin: 30px auto;
+  font-size: 0.9em;
+  width: 80%;
+  min-width: 400px;
+
+}
+
+.summary {
+  text-align: end;
+
+
+}
+
+.content-table {
+  border-collapse: collapse;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+  color: black;
+  text-align: left;
+  font-weight: bold;
+  border-bottom: 2px solid #dddddd;
+
+}
+
+.content-table th,
+.content-table td {
+  padding: 12px 15px;
+}
+
+.content-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even){
+  background-color: #f3f3f3;
+
+}
+
+.content-table tbody tr:last-of-type {
+  border-bottom: 2px solid #dddddd;
+
+}

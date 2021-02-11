@@ -6,6 +6,8 @@ export interface Product {
   author: string;
   description: string;
   price: number;
+  producer: string;
+  productType: string;
   stock: number;
   isActive: boolean;
   url: string;
