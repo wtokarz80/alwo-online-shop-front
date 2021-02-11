@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SignupComponent } from './auth/signup/signup.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './auth/login/login.component';
@@ -18,6 +18,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import {ProductDetailsComponent} from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -29,18 +30,20 @@ import { PaginationComponent } from './pagination/pagination.component';
     CategoriesComponent,
     ProductsComponent,
     ProductComponent,
-    PaginationComponent
+    PaginationComponent,
+    ProductDetailsComponent
 
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      ReactiveFormsModule,
-      HttpClientModule,
-      NgxWebstorageModule.forRoot(),
-      BrowserAnimationsModule,
-      ToastrModule.forRoot()
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgxWebstorageModule.forRoot(),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    FormsModule
+  ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
