@@ -3,7 +3,6 @@ import {Product} from '../models/product';
 import {BasketService} from '../services/basket.service';
 import {BasketProductDto} from '../models/basketProductDto';
 import {AuthService} from '../auth/services/auth.service';
-import {LocalBasketService} from '../services/local-basket.service';
 
 @Component({
   selector: 'app-product',

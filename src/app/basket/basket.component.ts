@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {BasketProductDto} from '../models/basketProductDto';
 import {BasketService} from '../services/basket.service';
 import {Observable} from 'rxjs';
 import {AuthService} from '../auth/services/auth.service';
+import {BasketProductDto} from '../models/basketProductDto';
 
 @Component({
   selector: 'app-basket',

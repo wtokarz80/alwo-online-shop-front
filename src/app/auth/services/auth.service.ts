@@ -1,6 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, throwError} from 'rxjs';
+import {BehaviorSubject, Observable, throwError} from 'rxjs';
 import {SignupRequestPayload} from '../models/signup-request.payload';
 import {map, tap} from 'rxjs/operators';
 import {LoginResponse} from '../models/login-response';
