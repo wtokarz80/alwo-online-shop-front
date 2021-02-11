@@ -18,6 +18,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductsComponent } from './products/products.component';
 import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { BasketComponent } from './basket/basket.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PaginationComponent } from './pagination/pagination.component';
     CategoriesComponent,
     ProductsComponent,
     ProductComponent,
-    PaginationComponent
+    PaginationComponent,
+    BasketComponent
 
   ],
     imports: [
