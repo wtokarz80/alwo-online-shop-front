@@ -1,4 +1,5 @@
 <div class="products-wrapper">
   <app-product *ngFor="let product of productService.products"
-               [product]=product> </app-product>
+               [product]=product
+               [routerLink]="'/product/' + product.id" ></app-product>
 </div>
