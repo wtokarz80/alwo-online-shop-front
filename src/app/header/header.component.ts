@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
     this.userRole = this.authService.getUserRole();
   }
 
-  logout(): void {
+  public logout(): void {
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigateByUrl('/');
