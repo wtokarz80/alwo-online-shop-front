@@ -15,10 +15,17 @@ export class AuthService {
 
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
+  @Output() userRole: EventEmitter<string> = new EventEmitter();
+
+  private isLogged$ = new BehaviorSubject<boolean>(false);
 
 
   constructor(private httpClient: HttpClient,
               private localStorage: LocalStorageService) {
+  }
+
+  getIsLogged$(): Observable<boolean> {
+    return this.isLogged$.asObservable();
   }
 
   // tslint:disable-next-line:typedef
@@ -35,16 +42,31 @@ export class AuthService {
 
   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
     return this.httpClient.post<LoginResponse>('http://localhost:8080/alwo/auth/login',
-      loginRequestPayload).pipe(map(data => {
-      this.localStorage.store('authenticationToken', data.authenticationToken);
-      this.localStorage.store('username', data.username);
-      this.localStorage.store('refreshToken', data.refreshToken);
-      this.localStorage.store('expiresAt', data.expiresAt);
+      loginRequestPayload).pipe(
+      map(data => {
+        this.localStorage.store('authenticationToken', data.authenticationToken);
+        this.localStorage.store('username', data.username);
+        this.localStorage.store('refreshToken', data.refreshToken);
+        this.localStorage.store('expiresAt', data.expiresAt);
+        this.localStorage.store('userrole', data.userRole);
 
-      this.loggedIn.emit(true);
-      this.username.emit(data.username);
-      return true;
-    }));
+        this.loggedIn.emit(true);
+        this.username.emit(data.username);
+        this.userRole.emit(data.userRole);
+
+        return true;
+      }),
+      tap(() => this.isLogged$.next(true)),
+    );
+  }
+
+  loadAuthData(): void {
+    if (this.getJwtToken() != null) {
+      this.isLogged$.next(true);
+
+    } else {
+      this.isLogged$.next(false);
+    }
   }
 
   refreshToken() {
@@ -65,7 +87,9 @@ export class AuthService {
     console.log(this.getRefreshTokenPayload());
 
     this.httpClient.post('http://localhost:8080/alwo/auth/logout', this.getRefreshTokenPayload(),
-      { responseType: 'text' })
+      { responseType: 'text' }).pipe(
+      tap(() => this.isLogged$.next(false)),
+    )
       .subscribe(data => {
         console.log(data);
       }, error => {
@@ -75,6 +99,8 @@ export class AuthService {
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
+    this.localStorage.clear('userrole');
+    this.localStorage.clear('basket');
   }
 
   getJwtToken() {
@@ -88,95 +114,9 @@ export class AuthService {
     return this.localStorage.retrieve('refreshToken');
   }
 
-  isLoggedIn(): boolean {
-    return this.getJwtToken() != null;
+  getUserRole(): string {
+    return this.localStorage.retrieve('userrole');
   }
+
 }
 
-// export class AuthService {
-//
-//   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
-//   @Output() username: EventEmitter<string> = new EventEmitter();
-//
-//   refreshTokenPayload = {
-//     refreshToken: this.getRefreshToken(),
-//     username: this.getUserName()
-//   };
-//
-//   constructor(private httpClient: HttpClient,
-//               private localStorage: LocalStorageService) { }
-//
-//   signup(signupRequestPayload: SignupRequestPayload): Observable<any> {
-//     return this.httpClient.post('http://localhost:8080/alwo/auth/signup', signupRequestPayload, {responseType: 'text'});
-//   }
-//
-//   login(loginRequestPayload: LoginRequestPayload): Observable<boolean> {
-//
-//     return this.httpClient.post<LoginResponse>('http://localhost:8080/alwo/auth/login', loginRequestPayload)
-//       .pipe(map(data => {
-//         this.localStorage.store('authenticationToken', data.authenticationToken);
-//         this.localStorage.store('username', data.username);
-//         this.localStorage.store('refreshToken', data.refreshToken);
-//         this.localStorage.store('expiresAt', data.expiresAt);
-//
-//         this.loggedIn.emit(true);
-//         this.username.emit(data.username);
-//
-//         console.log(localStorage.getItem('authenticationToken'));
-//         console.log(localStorage.getItem('username'));
-//
-//         return true;
-//       }));
-//
-//   }
-//
-//   logout(): void {
-//     console.log(this.localStorage.retrieve('refresh'));
-//     console.log(this.localStorage.retrieve('username'));
-//
-//     this.httpClient.post('http://localhost:8080/alwo/auth/logout', this.refreshTokenPayload,
-//       { responseType: 'text' })
-//       .subscribe(data => {
-//         console.log(data);
-//       }, error => {
-//         throwError(error);
-//       });
-//     this.localStorage.clear('authenticationToken');
-//     this.localStorage.clear('username');
-//     this.localStorage.clear('refreshToken');
-//     this.localStorage.clear('expiresAt');
-//   }
-//
-//   // tslint:disable-next-line:typedef
-//   refreshToken() {
-//     return this.httpClient.post<LoginResponse>('http://localhost:8080/alwo/auth/refresh/token',
-//       this.refreshTokenPayload)
-//       .pipe(tap(response => {
-//         this.localStorage.clear('authenticationToken');
-//         this.localStorage.clear('expiresAt');
-//
-//         this.localStorage.store('authenticationToken',
-//           response.authenticationToken);
-//         this.localStorage.store('expiresAt', response.expiresAt);
-//       }));
-//   }
-//
-//   // tslint:disable-next-line:typedef
-//   getJwtToken() {
-//     return this.localStorage.retrieve('authenticationToken');
-//   }
-//
-//   // tslint:disable-next-line:typedef
-//   getUserName() {
-//     return this.localStorage.retrieve('username');
-//   }
-//
-//   isLoggedIn(): boolean {
-//     return this.getJwtToken() != null;
-//   }
-//
-//   // tslint:disable-next-line:typedef
-//   getRefreshToken() {
-//     return this.localStorage.retrieve('refreshToken');
-//   }
-// }
