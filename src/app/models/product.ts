@@ -1,3 +1,5 @@
+import {Category} from './category';
+
 export interface Product {
   id: number;
   name: string;
@@ -8,5 +10,6 @@ export interface Product {
   productType: string;
   stock: number;
   isActive: boolean;
-  imgSrc?: string;
+  url: string;
+  categories: Category[];
 }

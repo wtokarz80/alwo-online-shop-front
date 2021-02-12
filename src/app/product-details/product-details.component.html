@@ -1,0 +1,16 @@
+
+<div class="container" *ngIf="productService.product as product">
+  <div class="picture"> <img [src]="'/assets/' + product.url" class="img"> </div>
+  <div class="details">
+    <div> <h2>{{product.name | uppercase}}</h2> </div>
+    <div>
+      <p> {{product.price | currency:'USD'}} </p>
+      <p> {{product.description}}</p> </div>
+    <button class="btn-add" type="button">Add to cart</button>
+    <div class="categories">
+      Categories:
+      <span *ngFor="let category of product.categories; let last = last">{{category.categoryName + (last ? '' : ', ')}}</span>
+    </div>
+    <button class="btn-back" type="button">Back to shop</button>
+  </div>
+</div>
