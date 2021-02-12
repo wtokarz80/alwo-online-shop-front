@@ -4,6 +4,7 @@ import {ProductService} from '../services/product.service';
 import {Product} from '../models/product';
 import {BasketProductDto} from '../models/basketProductDto';
 import {BasketService} from '../services/basket.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -12,18 +13,22 @@ import {BasketService} from '../services/basket.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
+
   constructor(private activatedRoute: ActivatedRoute,
               public productService: ProductService,
-              private basketService: BasketService) { }
+              private basketService: BasketService,
+              private location: Location) { }
 
   ngOnInit(): void {
     const productId = this.activatedRoute.snapshot.paramMap.get('id');
     this.productService.getProductById(productId).subscribe();
   }
 
-  addProductToBasket(product: Product): void {
-    const basketProductDto = new BasketProductDto(product.id,
-      1,
+  public onSubmit(product: Product, event: any): void {
+    const quantity: number = parseInt(event.target.amount.value, 10);
+    const basketProductDto = new BasketProductDto(
+      product.id,
+      quantity,
       product.name,
       product.author,
       product.description,
@@ -37,4 +42,9 @@ export class ProductDetailsComponent implements OnInit {
     this.basketService.addProductToBasket(basketProductDto);
 
   }
+
+  public back(): void {
+    this.location.back();
+  }
+
 }

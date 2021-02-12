@@ -40,9 +40,19 @@ button {
 .btn-add {
   background-color: #A71E1E;
   color: #FFF;
+
+}
+
+.btn-add, .btn-back:hover {
+  cursor: pointer;
 }
 
 .categories {
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   padding-top: 16px;
+}
+
+.amount {
+  font-size: 1.2em;
+  margin-right: 2em;
 }
