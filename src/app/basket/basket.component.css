@@ -83,3 +83,23 @@
   border-bottom: 2px solid #dddddd;
 
 }
+
+.empty-basket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-basket p {
+  font-size: 1.2em;
+  margin: 1em;
+}
+
+.empty-basket button {
+  width: 5em;
+  line-height: 1.5em;
+  font-size: 1em;
+  background: rgba(33, 127, 215, 1);
+  color: white;
+  border-radius: 5px;
+}

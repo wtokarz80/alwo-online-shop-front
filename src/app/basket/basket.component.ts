@@ -3,6 +3,7 @@ import {BasketService} from '../services/basket.service';
 import {Observable} from 'rxjs';
 import {AuthService} from '../auth/services/auth.service';
 import {BasketProductDto} from '../models/basketProductDto';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-basket',
@@ -16,7 +17,8 @@ export class BasketComponent implements OnInit {
   total: number;
 
   constructor(private basketService: BasketService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private location: Location) { }
 
   ngOnInit(): void {
     this.basketProductsDto = this.basketService.getBasketProducts$();
@@ -40,4 +42,7 @@ export class BasketComponent implements OnInit {
     this.basketService.removeAllFromBasket();
   }
 
+  public back(): void {
+    this.location.back();
+  }
 }

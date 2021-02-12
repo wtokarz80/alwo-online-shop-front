@@ -19,7 +19,6 @@ export class LocalBasketService {
   }
 
   public addProductToLocalBasket(basketProductDto: BasketProductDto): void {
-    console.log('ala ma kota');
     let localBasket = this.localStorage.retrieve('basket');
     const ids = [];
     if (localBasket !== null) {

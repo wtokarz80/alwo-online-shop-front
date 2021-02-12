@@ -4,7 +4,7 @@
   <div class=""></div>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="total !== 0; else emptyBasket">
   <table class="content-table">
     <thead>
     <tr>
@@ -36,3 +36,11 @@
     <p class="total-price"><span>{{total + 12}} PLN</span></p>
   </div>
 </div>
+
+<ng-template #emptyBasket>
+  <div class="empty-basket">
+    <p> your basket is empty</p>
+    <button class="btn-add" type="button" (click)="back()">back</button>
+  </div>
+</ng-template>
+
