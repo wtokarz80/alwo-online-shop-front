@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -46,7 +46,8 @@ import { FooterComponent } from './footer/footer.component';
       NgxWebstorageModule.forRoot(),
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
-      FormsModule
+      FormsModule,
+      NgxPaginationModule
     ],
   providers: [
     {

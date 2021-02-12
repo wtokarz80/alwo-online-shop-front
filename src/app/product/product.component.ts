@@ -22,7 +22,8 @@ export class ProductComponent implements OnInit {
     this.authService.getIsLogged$().subscribe((data: boolean) => this.isLoggedIn = data);
   }
 
-  addProductToBasket(product: Product): void {
+  addProductToBasket($event: Event, product: Product): void {
+    $event.stopPropagation();
     const basketProductDto = new BasketProductDto(product.id,
       1,
       product.name,
