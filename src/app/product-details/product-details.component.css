@@ -1,0 +1,48 @@
+:host {
+  margin: 0 51px 21px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.picture {
+  flex: 1;
+  margin-right: 63px;
+}
+
+.details {
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.img {
+  width: 100%;
+  height: auto;
+}
+
+button {
+  width: fit-content;
+  font-size: 1rem;
+  padding: 11px 19px;
+  border-radius: 25px;
+  border: 0;
+}
+
+.btn-back {
+  background-color: #C4C4C4;
+  color: #000;
+}
+
+
+.btn-add {
+  background-color: #A71E1E;
+  color: #FFF;
+}
+
+.categories {
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  padding-top: 16px;
+}

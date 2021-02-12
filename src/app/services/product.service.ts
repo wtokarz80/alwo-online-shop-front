@@ -13,6 +13,7 @@ export class ProductService {
 
   public selectedCategory: string;
   public products: Product[];
+  public product: Product;
   constructor(public http: HttpClient) {
   }
 
@@ -23,7 +24,6 @@ export class ProductService {
 
   public getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${environment.API_URL}/products`).pipe(
-      map((products: Product[]) => products.map((product, index) => ({...product, imgSrc: `${index}.jpg`}))),
       tap(products => this.products = products)
     );
   }
@@ -38,5 +38,11 @@ export class ProductService {
       .pipe(
         map((products: Product[]) => products.map((product, index) => ({...product, imgSrc: `${index}.jpg`}))),
         tap(products => this.products = products));
+  }
+
+  getProductById(productId: string): Observable<Product> {
+    return this.http.get<Product>(`${environment.API_URL}/products/` + productId).pipe(
+      tap(product => this.product = product)
+    );
   }
 }

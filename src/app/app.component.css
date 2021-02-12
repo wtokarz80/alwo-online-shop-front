@@ -1,4 +1,9 @@
 .content-wrapper {
-  width: 80%;
+  width: 50%;
   margin: auto;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
 }
