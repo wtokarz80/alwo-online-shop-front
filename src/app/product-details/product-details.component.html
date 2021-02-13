@@ -6,12 +6,11 @@
     <div>
       <p> {{product.price | currency:'USD'}} </p>
       <p> {{product.description}}</p> </div>
-    <form (ngSubmit)="onSubmit(product, $event)" class="add-form" #form = "ngForm">
+    <div class="add-form">
       <input type="number" class="amount" name="amount" [min]="1" [max]="product.stock"
-             [step]="1"
-             value="1"/>
-      <button class="btn-add" type="submit" >Add to cart</button>
-    </form>
+             [step]="1" value="1" #amountInput/>
+      <button class="btn-add" type="button" (click)="onSubmit(product, amountInput.value)">Add to cart</button>
+    </div>
     <div class="categories">
       Categories:
       <span *ngFor="let category of product.categories; let last = last">{{category.categoryName + (last ? '' : ', ')}}</span>

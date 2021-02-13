@@ -24,8 +24,8 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getProductById(productId).subscribe();
   }
 
-  public onSubmit(product: Product, event: any): void {
-    const quantity: number = parseInt(event.target.amount.value, 10);
+  public onSubmit(product: Product, amount: string): void {
+    const quantity: number = parseInt(amount, 10);
     const basketProductDto = new BasketProductDto(
       product.id,
       quantity,

@@ -38,6 +38,11 @@ display: flex;
   flex-direction: row;
 }
 
+.table-product > a {
+  text-decoration: none;
+  color: black;
+}
+
 .amount {
   font-size: 1em;
 }

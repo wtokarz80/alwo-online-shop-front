@@ -20,8 +20,9 @@
     <tbody>
     <tr *ngFor="let basketProductDto of basketProductsDto | async">
       <td><button class="btn-del" type="button" (click)="removeProductFromBasket(basketProductDto)">x</button></td>
-      <td><div class="table-product"><img [src]="'/assets/' + basketProductDto.url" class="img"><p
-        class="product-name">{{basketProductDto.name.slice(0,50)}}</p></div></td>
+      <td><div class="table-product"><img [src]="'/assets/' + basketProductDto.url" class="img"><a
+        [routerLink]="'/product/' + basketProductDto.productId"
+        class="product-name">{{basketProductDto.name.slice(0,50)}}</a></div></td>
       <td>{{basketProductDto.price}} zł</td>
       <td><input type="number" class="amount" [min]="0" [max]="100" [step]="1" [(ngModel)]="basketProductDto.quantity"
                  #quantity="ngModel"
