@@ -19,7 +19,6 @@ export class LocalBasketService {
   }
 
   public addProductToLocalBasket(basketProductDto: BasketProductDto): void {
-    console.log('ala ma kota');
     let localBasket = this.localStorage.retrieve('basket');
     const ids = [];
     if (localBasket !== null) {
@@ -82,14 +81,8 @@ export class LocalBasketService {
   }
 
   removeProductFromLocalBasket(basketProductDto: BasketProductDto): void {
-    const localBasket = this.localStorage.retrieve('basket');
-    if (localBasket && basketProductDto !== null) {
-      for (let i = 0; i < localBasket.length; i++) {
-        if (localBasket[i].productId === basketProductDto.productId) {
-          localBasket.splice(i, 1);
-        }
-      }
-    }
+    let localBasket = this.localStorage.retrieve('basket');
+    localBasket = localBasket.filter(e => e !== basketProductDto);
     this.localStorage.clear('basket');
     if (localBasket && localBasket.length > 0){
       this.localStorage.store('basket', localBasket);

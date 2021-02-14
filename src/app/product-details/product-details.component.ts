@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../services/product.service';
+import {Product} from '../models/product';
+import {BasketProductDto} from '../models/basketProductDto';
+import {BasketService} from '../services/basket.service';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
@@ -9,10 +13,38 @@ import {ProductService} from '../services/product.service';
 })
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, public productService: ProductService) { }
+
+  constructor(private activatedRoute: ActivatedRoute,
+              public productService: ProductService,
+              private basketService: BasketService,
+              private location: Location) { }
 
   ngOnInit(): void {
     const productId = this.activatedRoute.snapshot.paramMap.get('id');
     this.productService.getProductById(productId).subscribe();
   }
+
+  public onSubmit(product: Product, amount: string): void {
+    const quantity: number = parseInt(amount, 10);
+    const basketProductDto = new BasketProductDto(
+      product.id,
+      quantity,
+      product.name,
+      product.author,
+      product.description,
+      product.price,
+      product.producer,
+      product.productType,
+      product.stock,
+      product.isActive,
+      product.url);
+
+    this.basketService.addProductToBasket(basketProductDto);
+
+  }
+
+  public back(): void {
+    this.location.back();
+  }
+
 }

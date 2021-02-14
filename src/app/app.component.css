@@ -2,3 +2,20 @@
   width: 50%;
   margin: auto;
 }
+
+
+.container {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.content-wrapper {
+  flex-grow: 1;
+}
+
+.header, .footer {
+  flex-shrink: 0;
+}
+

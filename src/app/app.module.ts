@@ -20,6 +20,7 @@ import { ProductComponent } from './product/product.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import { BasketComponent } from './basket/basket.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BasketComponent } from './basket/basket.component';
     ProductComponent,
     PaginationComponent,
     ProductDetailsComponent,
-    BasketComponent
+    BasketComponent,
+    FooterComponent
 
   ],
     imports: [

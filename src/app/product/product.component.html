@@ -1,5 +1,10 @@
 <img [src]="'/assets/' + product.url" class="img">
-<p> {{product.name}} </p>
-<p> {{product.price | currency:'USD'}} </p>
-<button class="btn-add" type="button" (click)="addProductToBasket($event, product)">add</button>
+<div class="data-container">
+  <div class="product-data">
+    <p> {{product.name}} </p>
+    <p> {{product.price | currency:'USD'}} </p>
+  </div>
+  <button class="btn-add" type="button" (click)="addProductToBasket($event, product)">add</button>
+</div>
+
 

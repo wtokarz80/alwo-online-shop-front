@@ -33,7 +33,8 @@ export class ProductComponent implements OnInit {
       product.producer,
       product.productType,
       product.stock,
-      product.isActive);
+      product.isActive,
+      product.url);
 
     this.basketService.addProductToBasket(basketProductDto);
 

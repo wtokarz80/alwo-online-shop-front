@@ -10,7 +10,7 @@ export class BasketProductDto {
   productType: string;
   stock: number;
   isActive: boolean;
-  // imgSrc?: string;
+  url: string;
 
 
   constructor(productId: number,
@@ -22,7 +22,8 @@ export class BasketProductDto {
               producer: string,
               productType: string,
               stock: number,
-              isActive: boolean
+              isActive: boolean,
+              url: string
   ) {
     this.productId = productId;
     this.quantity = quantity;
@@ -34,5 +35,6 @@ export class BasketProductDto {
     this.productType = productType;
     this.stock = stock;
     this.isActive = isActive;
+    this.url = url;
   }
 }

@@ -4,11 +4,11 @@
   <div class=""></div>
 </div>
 
-<div class="container">
+<div class="container" *ngIf="total !== 0; else emptyBasket">
   <table class="content-table">
     <thead>
     <tr>
-      <th class="del-field"><button class="btn-add" type="button" (click)="removeAllFromBasket()">del
+      <th class="del-field"><button class="btn-del" type="button" (click)="removeAllFromBasket()">x
       </button></th>
       <th class="product-field">Product</th>
       <th class="price-field">Price</th>
@@ -19,20 +19,31 @@
 
     <tbody>
     <tr *ngFor="let basketProductDto of basketProductsDto | async">
-      <td><button class="btn-add" type="button" (click)="removeProductFromBasket(basketProductDto)">del</button></td>
-      <td><div class="img"><p class="product-name">{{basketProductDto.name}}</p></div></td>
-      <td>{{basketProductDto.price}}</td>
-      <td><input type="number" [min]="0" [max]="100" [step]="1" [(ngModel)]="basketProductDto.quantity"
+      <td><button class="btn-del" type="button" (click)="removeProductFromBasket(basketProductDto)">x</button></td>
+      <td><div class="table-product"><img [src]="'/assets/' + basketProductDto.url" class="img"><a
+        [routerLink]="'/product/' + basketProductDto.productId"
+        class="product-name">{{basketProductDto.name.slice(0,50)}}</a></div></td>
+      <td>{{basketProductDto.price}} zł</td>
+      <td><input type="number" class="amount" [min]="0" [max]="100" [step]="1" [(ngModel)]="basketProductDto.quantity"
                  #quantity="ngModel"
                  (change)="onSelectQuantity(basketProductDto)" /></td>
-      <td>{{basketProductDto.price * basketProductDto.quantity}}</td>
+      <td>{{basketProductDto.price * basketProductDto.quantity}} zł</td>
     </tr>
     </tbody>
   </table>
 
   <div class="summary">
-    <p class="products-price"><span>{{total}} PLN</span></p>
-    <p class="shipment-price"><span>12 PLN</span></p>
-    <p class="total-price"><span>{{total + 12}} PLN</span></p>
+    <p class="products-price"><span>{{total}} zł</span></p>
+    <p class="shipment-price"><span>12 zł</span></p>
+    <p class="total-price"><span>{{total + 12}} zł</span></p>
   </div>
+  <button class="btn-back" type="button" (click)="back()">back</button>
 </div>
+
+<ng-template #emptyBasket>
+  <div class="empty-basket">
+    <p> your basket is empty</p>
+    <button class="btn-back" type="button" (click)="back()">back</button>
+  </div>
+</ng-template>
+

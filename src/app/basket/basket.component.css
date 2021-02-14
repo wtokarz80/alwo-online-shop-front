@@ -1,17 +1,11 @@
-:host {
-  margin-left: 37px;
-}
+/*:host {*/
+/*  margin-left: 37px;*/
+/*}*/
 
 .title {
   margin: 30px auto;
   text-align: center;
   text-transform: uppercase;
-}
-
-.img {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
 }
 
 .del-field {
@@ -32,22 +26,37 @@
 }
 
 .product-name {
-  margin-left: 5em;
-  line-height: 50px;
+  margin-left: 1em;
+}
+.img {
+  width: 47px;
+  height: 69px;
+}
+
+.table-product {
+display: flex;
+  flex-direction: row;
+}
+
+.table-product > a {
+  text-decoration: none;
+  color: black;
+}
+
+.amount {
+  font-size: 1em;
 }
 
 .container {
   margin: 30px auto;
   font-size: 0.9em;
-  width: 80%;
+  width: 100%;
   min-width: 400px;
 
 }
 
 .summary {
   text-align: end;
-
-
 }
 
 .content-table {
@@ -68,6 +77,7 @@
 .content-table th,
 .content-table td {
   padding: 12px 15px;
+  font-size: 1.2em;
 }
 
 .content-table tbody tr {
@@ -82,4 +92,38 @@
 .content-table tbody tr:last-of-type {
   border-bottom: 2px solid #dddddd;
 
+}
+
+.empty-basket {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-basket p {
+  font-size: 1.2em;
+  margin: 1em;
+}
+
+.btn-back {
+  width: 5em;
+  line-height: 1.5em;
+  font-size: 1em;
+  background: rgba(33, 127, 215, 1);
+  color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease-out;
+}
+
+
+.btn-del {
+border-radius: 50%;
+width: 20px;
+  height: 20px;
+  font-weight: bold;
+  transition: all 0.3s ease-out;
+}
+
+.btn-del, .btn-back:hover {
+  cursor: pointer;
 }

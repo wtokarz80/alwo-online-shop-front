@@ -147,7 +147,7 @@ header {
 .menu-bar {
   background: rgba(33, 127, 215, 1);
   text-align: center;
-  width: 80%;
+  width: 100%;
   min-width: 1000px;
   font-size: 1em;
   text-transform: uppercase;
