@@ -16,6 +16,7 @@ export class BasketComponent implements OnInit {
   isLoggedIn: boolean;
   basketProductsDto: Observable<BasketProductDto[]>;
   total: number;
+  shipmentPrice = 0;
 
   constructor(private basketService: BasketService,
               private authService: AuthService,
@@ -62,5 +63,13 @@ export class BasketComponent implements OnInit {
         return data;
       })
     );
+  }
+
+  onShipmentCost(shipmentPrice: number): void {
+    this.shipmentPrice = shipmentPrice;
+  }
+
+  next(): void {
+    console.log('not implemented yet');
   }
 }

@@ -34,7 +34,7 @@
 }
 
 .table-product {
-display: flex;
+  display: flex;
   flex-direction: row;
 }
 
@@ -53,10 +53,6 @@ display: flex;
   width: 100%;
   min-width: 400px;
 
-}
-
-.summary {
-  text-align: end;
 }
 
 .content-table {
@@ -105,7 +101,7 @@ display: flex;
   margin: 1em;
 }
 
-.btn-back {
+.btn-back, .btn-next {
   width: 5em;
   line-height: 1.5em;
   font-size: 1em;
@@ -115,10 +111,15 @@ display: flex;
   transition: all 0.3s ease-out;
 }
 
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
 .btn-del {
-border-radius: 50%;
-width: 20px;
+  border-radius: 50%;
+  width: 20px;
   height: 20px;
   font-weight: bold;
   transition: all 0.3s ease-out;
@@ -127,3 +128,43 @@ width: 20px;
 .btn-del, .btn-back:hover {
   cursor: pointer;
 }
+
+.summary {
+  margin: 2em 0 5em auto;
+  width: 50%;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-1 {
+  width: 70%;
+  text-align: end;
+}
+
+.summary-2 {
+  width: 30%;
+  margin-right: 2em;
+  text-align: end;
+
+}
+
+.summary p {
+  line-height: 1.5em;
+  font-size: 1.3em;
+}
+
+.children_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.total-price-value {
+  font-weight: bold;
+  border-bottom: 1px solid gray;
+}
+

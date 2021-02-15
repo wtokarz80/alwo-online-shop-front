@@ -33,11 +33,27 @@
   </table>
 
   <div class="summary">
-    <p class="products-price"><span>{{total}} zł</span></p>
-    <p class="shipment-price"><span>12 zł</span></p>
-    <p class="total-price"><span>{{total + 12}} zł</span></p>
+    <div class="summary-1">
+      <p class="products-price">products price:</p>
+      <p class="shipment-price">shipment price:</p>
+      <p class="total-price">total price:</p>
+    </div>
+    <div class="summary-2">
+      <p class="products-price-value">{{total}} zł</p>
+      <p class="shipment-price-value">{{shipmentPrice}} zł</p>
+      <p class="total-price-value">{{total + shipmentPrice}} zł</p>
+    </div>
   </div>
-  <button class="btn-back" type="button" (click)="back()">back</button>
+  <div class="children_wrapper">
+    <app-payment></app-payment>
+    <app-shipment (shipmentCost)="onShipmentCost($event)"></app-shipment>
+  </div>
+  <div class="buttons">
+    <button class="btn-back" type="button" (click)="back()">back</button>
+    <button class="btn-next" type="button" (click)="next()">next</button>
+  </div>
+
+
 </div>
 
 <ng-template #emptyBasket>
@@ -46,4 +62,5 @@
     <button class="btn-back" type="button" (click)="back()">back</button>
   </div>
 </ng-template>
+
 
