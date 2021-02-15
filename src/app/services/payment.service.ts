@@ -10,7 +10,6 @@ import {Payment} from '../models/payment';
 export class PaymentService {
 
 
-
   constructor(private http: HttpClient) { }
 
   public getAllPayments(): Observable<Payment[]> {

@@ -56,6 +56,7 @@
 }
 
 .content-table {
+  margin: 0 auto;
   border-collapse: collapse;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
@@ -112,6 +113,8 @@
 }
 
 .buttons {
+  width: 80%;
+  margin: 3em auto 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -130,7 +133,8 @@
 }
 
 .summary {
-  margin: 2em 0 5em auto;
+  /*margin: 2em 10em 5em auto;*/
+  margin: 2em 0 5em 25vw;
   width: 50%;
   min-width: 300px;
   display: flex;
@@ -159,8 +163,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 2em;
-  width: 100%;
+  margin: 0 auto;
+  width: 80%;
 }
 
 .total-price-value {
