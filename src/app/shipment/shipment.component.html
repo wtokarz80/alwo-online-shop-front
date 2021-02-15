@@ -1,0 +1,11 @@
+<header class="header"> SHIPMENTS </header>
+<div class="payment-wrapper">
+  <li *ngFor="let shipment of shipments" (click)="onSelectShipment(shipment)" class="payment">
+    <div class="radio-wrapper">
+      <div [ngClass]="{'radio': true, 'selected': selected === shipment.shipmentMethod}"></div>
+    </div>
+    <img [src]="'/assets/shipment/' + shipment.url" class="img">
+    <p class="payment-name">{{ shipment.shipmentMethod }}</p>
+    <p class="payment-desc">{{ shipment.description }}</p>
+  </li>
+</div>

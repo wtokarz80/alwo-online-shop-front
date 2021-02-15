@@ -22,6 +22,7 @@ import {ProductDetailsComponent} from './product-details/product-details.compone
 import { BasketComponent } from './basket/basket.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaymentComponent } from './payment/payment.component';
+import { ShipmentComponent } from './shipment/shipment.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PaymentComponent } from './payment/payment.component';
     ProductDetailsComponent,
     BasketComponent,
     FooterComponent,
-    PaymentComponent
+    PaymentComponent,
+    ShipmentComponent
 
   ],
     imports: [

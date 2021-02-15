@@ -1,1 +1,13 @@
-<p>payment works!</p>
+<header class="header"> PAYMENTS </header>
+<!--<hr class="header-separator">-->
+<div class="payment-wrapper">
+  <li *ngFor="let payment of payments" (click)="onSelectPayment(payment)" class="payment">
+    <div class="radio-wrapper">
+      <div [ngClass]="{'radio': true, 'selected': selected === payment.paymentMethod}"></div>
+    </div>
+    <img [src]="'/assets/payment/' + payment.url" class="img">
+    <p class="payment-name">{{ payment.paymentMethod }}</p>
+    <p class="payment-desc">{{ payment.description }}</p>
+  </li>
+</div>
+
