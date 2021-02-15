@@ -1,9 +1,7 @@
 <div class="products-wrapper">
-  <app-product *ngFor="let product of productService.products | paginate: { itemsPerPage: 2, currentPage: page }"
+  <app-product *ngFor="let product of productService.products | paginate: { itemsPerPage: 4, currentPage: productService.page }"
                [product]=product
                [routerLink]="'/product/' + product.id" ></app-product>
 </div>
 
-<div>
-  <pagination-controls (pageChange)="page = $event"></pagination-controls>
-</div>
+
