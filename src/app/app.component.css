@@ -1,11 +1,11 @@
 .content-wrapper {
-  width: 50%;
+  width: 70%;
   margin: auto;
 }
 
 
 .container {
-  min-height: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: stretch;

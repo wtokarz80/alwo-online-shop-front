@@ -2,4 +2,14 @@
   <app-categories class="categories"></app-categories>
   <app-products class="products"></app-products>
 </div>
-<app-pagination></app-pagination>
+
+<hr class="pagination-separator"/>
+
+<div class="pagination-wrapper">
+  <div class="spacer"></div>
+
+  <pagination-controls *ngIf="productService.products.length > 0" class="pagination"
+                       (pageChange)="productService.page = $event"
+                       responsive = "true">
+  </pagination-controls>
+</div>

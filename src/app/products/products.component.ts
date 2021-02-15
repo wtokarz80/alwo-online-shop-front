@@ -7,7 +7,6 @@ import {ProductService} from '../services/product.service';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  page = 1;
 
   constructor(public productService: ProductService) {
   }

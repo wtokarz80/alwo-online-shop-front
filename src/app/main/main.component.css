@@ -10,3 +10,53 @@
 .products {
   flex: 3;
 }
+
+.pagination-wrapper {
+  display: flex;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.pagination {
+  flex: 3;
+}
+
+.pagination /deep/ ul {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination /deep/ .ngx-pagination li:last-child {
+  margin-left: auto;
+}
+
+.pagination /deep/ .ngx-pagination li:first-child {
+  margin-right: auto;
+}
+
+.pagination /deep/ .ngx-pagination li {
+  background: #C4C4C4;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 50%;
+  margin: 0 5px;
+  }
+
+.pagination /deep/ .ngx-pagination .current {
+  background: #8C0404;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+}
+
+.pagination /deep/ .ngx-pagination .pagination-next, .pagination /deep/ .ngx-pagination .pagination-previous {
+  background: #C4C4C4;
+  border-radius: 16px;
+  color: black;
+}
+
+.pagination-separator {
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  margin: 40px 0px 30px 300px;
+}
