@@ -1,5 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {PaymentService} from '../payment/payment.service';
+import {Shipment} from '../models/shipment';
 
 @Component({
   selector: 'app-shipment',
