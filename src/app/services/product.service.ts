@@ -12,8 +12,9 @@ import {Category} from '../models/category';
 export class ProductService {
 
   public selectedCategory: string;
-  public products: Product[];
+  public products: Product[] = [];
   public product: Product;
+  public page = 1;
   constructor(public http: HttpClient) {
   }
 
