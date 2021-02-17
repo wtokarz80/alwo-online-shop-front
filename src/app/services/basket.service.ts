@@ -7,6 +7,7 @@ import {BasketProductDto} from '../models/basketProductDto';
 import {LocalStorageService} from 'ngx-webstorage';
 import {ApiBasketService} from './api-basket.service';
 import {LocalBasketService} from './local-basket.service';
+import {BasketStage} from '../models/basketStage';
 
 
 @Injectable({

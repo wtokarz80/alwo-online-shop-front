@@ -23,6 +23,7 @@ import { BasketComponent } from './basket/basket.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ShipmentComponent } from './shipment/shipment.component';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ShipmentComponent } from './shipment/shipment.component';
     BasketComponent,
     FooterComponent,
     PaymentComponent,
-    ShipmentComponent
+    ShipmentComponent,
+    AddressComponent
 
   ],
     imports: [

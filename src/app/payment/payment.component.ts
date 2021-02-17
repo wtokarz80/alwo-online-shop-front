@@ -1,8 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
-import {Category} from '../models/category';
-import {ProductService} from '../services/product.service';
 import {Payment} from '../models/payment';
 import {PaymentService} from '../services/payment.service';
+import {OrderService} from '../services/order.service';
+import {BasketStage} from '../models/basketStage';
 
 @Component({
   selector: 'app-payment',
@@ -11,23 +11,31 @@ import {PaymentService} from '../services/payment.service';
 })
 export class PaymentComponent implements OnInit {
 
-  @Output() selectedPayment = new EventEmitter<Payment>();
 
   payments: Payment[];
   status = false;
   selected: string;
+  basketStage$: BasketStage;
 
-  constructor(public paymentService: PaymentService) { }
+  constructor(public paymentService: PaymentService,
+              public orderService: OrderService) { }
 
   ngOnInit(): void {
     this.paymentService.getAllPayments().subscribe(data => {
       this.payments = data;
-      console.log(data);
     });
+    this.orderService.getStage().subscribe(
+      data => {
+        this.basketStage$ = data;
+        if (data.payment) {
+          this.selected = data.payment.paymentMethod;
+        }
+      }
+    );
   }
 
   onSelectPayment(payment: Payment): void {
-    this.selected = payment.paymentMethod;
-    console.log(payment);
+    this.basketStage$.payment = payment;
+    this.orderService.setState(this.basketStage$);
   }
 }

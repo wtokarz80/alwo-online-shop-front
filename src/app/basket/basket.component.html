@@ -46,13 +46,12 @@
   </div>
   <div class="children_wrapper">
     <app-payment></app-payment>
-    <app-shipment (shipmentCost)="onShipmentCost($event)"></app-shipment>
+    <app-shipment></app-shipment>
   </div>
   <div class="buttons">
     <button class="btn-back" type="button" (click)="back()">back</button>
-    <button class="btn-next" type="button" (click)="next()">next</button>
+    <button class="btn-next" type="button" routerLink="/address">next</button>
   </div>
-
 
 </div>
 

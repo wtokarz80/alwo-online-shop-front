@@ -1,6 +1,8 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Shipment} from '../models/shipment';
 import {ShipmentService} from '../services/shipment.service';
+import {OrderService} from '../services/order.service';
+import {BasketStage} from '../models/basketStage';
 
 @Component({
   selector: 'app-shipment',
@@ -11,20 +13,29 @@ export class ShipmentComponent implements OnInit {
 
   shipments: Shipment[];
   selected: string;
-  @Output() shipmentCost = new EventEmitter<number>();
+  status = false;
+  basketStage$: BasketStage;
 
-  constructor(public shipmentService: ShipmentService) { }
+  constructor(public shipmentService: ShipmentService,
+              public orderService: OrderService) { }
 
   ngOnInit(): void {
     this.shipmentService.getAllShipments().subscribe(data => {
       this.shipments = data;
-      console.log(data);
     });
+    this.orderService.getStage().subscribe(
+      data => {
+        this.basketStage$ = data;
+        if (data.shipment) {
+          this.selected = data.shipment.shipmentMethod;
+        }
+      }
+    );
   }
 
   onSelectShipment(shipment: Shipment): void {
-    this.selected = shipment.shipmentMethod;
-    this.shipmentCost.emit(shipment.shipmentCost);
+    this.basketStage$.shipment = shipment;
+    this.orderService.setState(this.basketStage$);
   }
 
 }

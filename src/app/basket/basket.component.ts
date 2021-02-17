@@ -5,6 +5,10 @@ import {AuthService} from '../auth/services/auth.service';
 import {BasketProductDto} from '../models/basketProductDto';
 import { Location } from '@angular/common';
 import {map} from 'rxjs/operators';
+import {Shipment} from '../models/shipment';
+import {Payment} from '../models/payment';
+import {OrderService} from '../services/order.service';
+import {BasketStage} from '../models/basketStage';
 
 @Component({
   selector: 'app-basket',
@@ -17,15 +21,25 @@ export class BasketComponent implements OnInit {
   basketProductsDto: Observable<BasketProductDto[]>;
   total: number;
   shipmentPrice = 0;
+  basketStage$: BasketStage;
 
   constructor(private basketService: BasketService,
               private authService: AuthService,
-              private location: Location) { }
+              private location: Location,
+              public orderService: OrderService) { }
 
   ngOnInit(): void {
     this.basketProductsDto = this.basketService.getBasketProducts$();
     this.authService.getIsLogged$().subscribe((data: boolean) => this.isLoggedIn = data);
     this.basketService.basketProductsPrice.subscribe((data: number) => this.total = data);
+    this.orderService.getStage().subscribe(
+      data => {
+        this.basketStage$ = data;
+        if (data.shipment) {
+          this.shipmentPrice = data.shipment.shipmentCost;
+        }
+      }
+    );
     this.basketService.getBasketProducts$().pipe(
       map((data) => {
         data.sort((a, b) => {
@@ -54,20 +68,10 @@ export class BasketComponent implements OnInit {
     this.location.back();
   }
 
-  private sortProducts(): void {
-    this.basketProductsDto = this.basketProductsDto.pipe(
-      map((data) => {
-        data.sort((a, b) => {
-          return a < b ? -1 : 1;
-        });
-        return data;
-      })
-    );
+  onShipment(shipment: Shipment): void {
+    this.shipmentPrice = shipment.shipmentCost;
   }
 
-  onShipmentCost(shipmentPrice: number): void {
-    this.shipmentPrice = shipmentPrice;
-  }
 
   next(): void {
     console.log('not implemented yet');

@@ -128,13 +128,13 @@
   transition: all 0.3s ease-out;
 }
 
-.btn-del, .btn-back:hover {
+.btn-del, .btn-back, .btn-next:hover {
   cursor: pointer;
 }
 
 .summary {
   /*margin: 2em 10em 5em auto;*/
-  margin: 2em 0 5em 25vw;
+  margin: 2em 0 4em 25vw;
   width: 50%;
   min-width: 300px;
   display: flex;
