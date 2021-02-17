@@ -107,6 +107,7 @@ export class BasketService {
   }
 
   public removeAllFromBasket(): void {
+    this.localStorage.clear('orderState');
     this.authService.getIsLogged$().pipe(
       first(),
       tap(isLogged => {

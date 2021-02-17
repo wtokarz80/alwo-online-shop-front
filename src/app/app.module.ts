@@ -21,6 +21,9 @@ import { PaginationComponent } from './pagination/pagination.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import { BasketComponent } from './basket/basket.component';
 import { FooterComponent } from './footer/footer.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ShipmentComponent } from './shipment/shipment.component';
+import { AddressComponent } from './address/address.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +38,10 @@ import { FooterComponent } from './footer/footer.component';
     PaginationComponent,
     ProductDetailsComponent,
     BasketComponent,
-    FooterComponent
+    FooterComponent,
+    PaymentComponent,
+    ShipmentComponent,
+    AddressComponent
 
   ],
     imports: [
