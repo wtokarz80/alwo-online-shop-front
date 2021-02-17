@@ -1,3 +1,35 @@
+.address-section {
+  width: 80%;
+  margin: 3em auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+
+}
+
+h4 {
+  margin-bottom: 1em;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.first-name, .last-name, .email, .phone, .street, .apartment-number, .zip-code, .city, .description, .contact-type {
+  display: flex;
+  flex-direction: column;
+  margin-right: 2em;
+}
+
+.summary {
+  margin-left: 2em;
+}
+
 
 .btn-back, .btn-next {
   width: 5em;

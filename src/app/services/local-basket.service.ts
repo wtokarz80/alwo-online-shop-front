@@ -18,6 +18,15 @@ export class LocalBasketService {
     return this.store$.asObservable();
   }
 
+  private emitLocalBasket(): void {
+    const localBasket = this.localStorage.retrieve('basket');
+    if (localBasket) {
+      this.store$.next(localBasket);
+    } else {
+      this.store$.next([]);
+    }
+  }
+
   public addProductToLocalBasket(basketProductDto: BasketProductDto): void {
     let localBasket = this.localStorage.retrieve('basket');
     const ids = [];
@@ -51,15 +60,6 @@ export class LocalBasketService {
     return  (localBasketProduct.quantity + chosenProduct.quantity) <= chosenProduct.stock;
   }
 
-
-  private emitLocalBasket(): void {
-    const localBasket = this.localStorage.retrieve('basket');
-    if (localBasket) {
-      this.store$.next(localBasket);
-    } else {
-      this.store$.next([]);
-    }
-  }
 
   public updateBasketProduct(basketProductDto: BasketProductDto): void {
     const localBasket = this.localStorage.retrieve('basket');

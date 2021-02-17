@@ -50,7 +50,8 @@
   </div>
   <div class="buttons">
     <button class="btn-back" type="button" (click)="back()">back</button>
-    <button class="btn-next" type="button" routerLink="/address">next</button>
+    <button *ngIf="orderStage$.payment && orderStage$.shipment" class="btn-next" type="button" routerLink="/address">next
+    </button>
   </div>
 
 </div>
