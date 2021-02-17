@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {BasketStage} from '../models/orderStage';
+import {OrderStage} from '../models/orderStage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrderService {
 
-  private basketStage$ = new BehaviorSubject<BasketStage>({} as BasketStage);
+  private orderStage$ = new BehaviorSubject<OrderStage>({} as OrderStage);
 
   constructor() { }
 
-  setState(basketStage: BasketStage): void {
-    this.basketStage$.next(basketStage);
+  setState(orderStage: OrderStage): void {
+    this.orderStage$.next(orderStage);
   }
 
-  getStage(): Observable<BasketStage> {
-    return this.basketStage$.asObservable();
+  getStage(): Observable<OrderStage> {
+    return this.orderStage$.asObservable();
   }
 }

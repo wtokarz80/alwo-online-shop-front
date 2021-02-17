@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
 import {Shipment} from '../models/shipment';
 import {Payment} from '../models/payment';
 import {OrderService} from '../services/order.service';
-import {BasketStage} from '../models/orderStage';
+import {OrderStage} from '../models/orderStage';
 
 @Component({
   selector: 'app-basket',
@@ -21,7 +21,7 @@ export class BasketComponent implements OnInit {
   basketProductsDto: Observable<BasketProductDto[]>;
   total: number;
   shipmentPrice = 0;
-  basketStage$: BasketStage;
+  orderStage$: OrderStage;
 
   constructor(private basketService: BasketService,
               private authService: AuthService,
@@ -34,7 +34,7 @@ export class BasketComponent implements OnInit {
     this.basketService.basketProductsPrice.subscribe((data: number) => this.total = data);
     this.orderService.getStage().subscribe(
       data => {
-        this.basketStage$ = data;
+        this.orderStage$ = data;
         if (data.shipment) {
           this.shipmentPrice = data.shipment.shipmentCost;
         }

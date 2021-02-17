@@ -20,3 +20,8 @@
 .btn-del, .btn-back, .btn-next:hover {
   cursor: pointer;
 }
+
+.is-invalid {
+  border: 2px solid red;
+}
+

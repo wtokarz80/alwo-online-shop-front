@@ -1,7 +1,128 @@
 <div class="summary">
 
-
 </div>
+
+<div class="address-section">
+
+  <div class="address-body">
+    <form [formGroup]="nestedForm">
+
+      <div class="address-container" formArrayName="address">
+        <div class="address-item" *ngFor="let group of addressArray.controls; let i = index;" [formGroupName]="i">
+          <h4>Contact details</h4>
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <div>
+              <input type="text" formControlName="firstName" id="first-name" class="input" name="first-name"
+                     placeholder="Enter first name"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <div>
+              <input type="text" formControlName="lastName" id="last-name" class="input" name="last-name"
+                     placeholder="Enter last name"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div>
+              <input type="text" formControlName="email" id="email" class="input" name="email"
+                     placeholder="Enter email"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone number</label>
+            <div>
+              <input type="text" formControlName="phone" id="phone" class="input" name="phone"
+                     placeholder="Enter phone number"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="street">Street</label>
+            <div>
+              <input type="text" formControlName="street" id="street" class="input" name="street"
+                     placeholder="Enter street name"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="apartment-number">Apartment number</label>
+            <div>
+              <input type="text" formControlName="apartmentNumber" id="apartment-number" class="input" name="apartment-number"
+                     placeholder="Enter apartment number"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="zip-code">Zip code</label>
+            <div>
+              <input type="text" formControlName="zipCode" id="zip-code" class="input" name="zip-code"
+                     placeholder="Enter zip code"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="city">City</label>
+            <div>
+              <input type="text" formControlName="city" id="city" class="input" name="city"
+                     placeholder="Enter city name"
+                     required autofocus>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="description">Description</label>
+            <div>
+              <input type="text" formControlName="description" id="description" class="input" name="description"
+                     placeholder="Enter description">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="contact-type">Address type</label>
+            <div>
+              <select formControlName="contactType" name="contact-type" id="contact-type"
+                      [ngClass]="{'input': true, 'is-invalid': !group.get('contactType').valid && group.get('contactType').touched}">
+                <option selected [ngValue]="null">Choose...</option>
+                <option *ngFor="let item of addressTypes" [value]="item">{{item}}</option>
+              </select>
+<!--              <span class="message"-->
+<!--                    *ngIf="!group.get('contactType').valid && group.get('contactType').touched">-->
+<!--                  Please provide a valid address type-->
+<!--                </span>-->
+            </div>
+          </div>
+
+          <div class="control-buttons">
+            <button class="btn-add" type="button" (click)="addAddress()">add</button>
+            <button class="btn-del" type="button"
+                    (click)="removeAddress(i)">del
+            </button>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-2">
+        <button type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()"
+                class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
 
 <div class="buttons">
   <button class="btn-back" type="button" routerLink="/basket">back</button>
