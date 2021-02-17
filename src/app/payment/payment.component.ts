@@ -2,7 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Payment} from '../models/payment';
 import {PaymentService} from '../services/payment.service';
 import {OrderService} from '../services/order.service';
-import {BasketStage} from '../models/basketStage';
+import {OrderStage} from '../models/orderStage';
 
 @Component({
   selector: 'app-payment',
@@ -15,7 +15,7 @@ export class PaymentComponent implements OnInit {
   payments: Payment[];
   status = false;
   selected: string;
-  basketStage$: BasketStage;
+  orderStage$: OrderStage;
 
   constructor(public paymentService: PaymentService,
               public orderService: OrderService) { }
@@ -26,7 +26,7 @@ export class PaymentComponent implements OnInit {
     });
     this.orderService.getStage().subscribe(
       data => {
-        this.basketStage$ = data;
+        this.orderStage$ = data;
         if (data.payment) {
           this.selected = data.payment.paymentMethod;
         }
@@ -35,7 +35,7 @@ export class PaymentComponent implements OnInit {
   }
 
   onSelectPayment(payment: Payment): void {
-    this.basketStage$.payment = payment;
-    this.orderService.setState(this.basketStage$);
+    this.orderStage$.payment = payment;
+    this.orderService.setState(this.orderStage$);
   }
 }

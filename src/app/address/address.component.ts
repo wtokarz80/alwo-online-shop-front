@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Address} from '../models/address';
 import {AddressService} from '../services/address.service';
+import {Location} from '@angular/common';
+import {OrderService} from '../services/order.service';
 
 @Component({
   selector: 'app-address',
@@ -10,18 +12,18 @@ import {AddressService} from '../services/address.service';
 export class AddressComponent implements OnInit {
 
   model: Partial<Address> = {};
-  addressTypes: string[];
+  addressTypes: Array<string> = ['INVOICE', 'DELIVERY'];
 
 
-  constructor(private addressService: AddressService) { }
+  constructor(private addressService: AddressService,
+              private location: Location,
+              public orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.addressService.getAddressTypes().subscribe(addressTypes => this.addressTypes = addressTypes);
   }
 
-  addAddress(): void {
-    console.log(this.model);
-    this.addressService.addAddress(this.model as Address);
+  public back(): void {
+    this.location.back();
   }
 }
 

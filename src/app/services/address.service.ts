@@ -12,11 +12,6 @@ export class AddressService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAddressTypes(): Observable<string[]> {
-    return this.httpClient.get<string[]>('http://localhost:8080/alwo/address-types');
-  }
 
-  addAddress(address: Address): void {
-    console.log(address);
-  }
+
 }

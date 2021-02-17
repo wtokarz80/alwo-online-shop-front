@@ -11,3 +11,8 @@ export interface Address {
   description: string;
   contactType: string;
 }
+
+enum ContactType {
+  DELIVERY = 'DELIVERY',
+  INVOICE = 'INVOICE',
+}

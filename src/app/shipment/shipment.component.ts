@@ -2,7 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Shipment} from '../models/shipment';
 import {ShipmentService} from '../services/shipment.service';
 import {OrderService} from '../services/order.service';
-import {BasketStage} from '../models/basketStage';
+import {OrderStage} from '../models/orderStage';
 
 @Component({
   selector: 'app-shipment',
@@ -14,7 +14,7 @@ export class ShipmentComponent implements OnInit {
   shipments: Shipment[];
   selected: string;
   status = false;
-  basketStage$: BasketStage;
+  orderStage$: OrderStage;
 
   constructor(public shipmentService: ShipmentService,
               public orderService: OrderService) { }
@@ -25,7 +25,7 @@ export class ShipmentComponent implements OnInit {
     });
     this.orderService.getStage().subscribe(
       data => {
-        this.basketStage$ = data;
+        this.orderStage$ = data;
         if (data.shipment) {
           this.selected = data.shipment.shipmentMethod;
         }
@@ -34,8 +34,8 @@ export class ShipmentComponent implements OnInit {
   }
 
   onSelectShipment(shipment: Shipment): void {
-    this.basketStage$.shipment = shipment;
-    this.orderService.setState(this.basketStage$);
+    this.orderStage$.shipment = shipment;
+    this.orderService.setState(this.orderStage$);
   }
 
 }

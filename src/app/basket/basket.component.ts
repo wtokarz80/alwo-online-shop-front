@@ -8,7 +8,7 @@ import {map} from 'rxjs/operators';
 import {Shipment} from '../models/shipment';
 import {Payment} from '../models/payment';
 import {OrderService} from '../services/order.service';
-import {BasketStage} from '../models/basketStage';
+import {BasketStage} from '../models/orderStage';
 
 @Component({
   selector: 'app-basket',
