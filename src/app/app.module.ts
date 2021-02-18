@@ -25,6 +25,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ShipmentComponent } from './shipment/shipment.component';
 import { AddressComponent } from './address/address.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     ShipmentComponent,
     AddressComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    ContactPageComponent
 
   ],
     imports: [
