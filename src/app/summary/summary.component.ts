@@ -14,7 +14,7 @@ import {OrderService} from '../services/order.service';
 export class SummaryComponent implements OnInit {
 
   total: number;
-  shipmentPrice = 0;
+  // shipmentPrice = 0;
   orderStage$: OrderStage;
   basketProductsDto: Observable<BasketProductDto[]>;
 
@@ -26,11 +26,7 @@ export class SummaryComponent implements OnInit {
     this.basketProductsDto = this.basketService.getBasketProducts$();
     this.orderService.getStage().subscribe(
       data => {
-        this.orderStage$ = data;
-        if (data.shipment) {
-          this.shipmentPrice = data.shipment.shipmentCost;
-        }
-      }
+        this.orderStage$ = data; }
     );
     this.basketService.getBasketProducts$().pipe(
       map((data) => {

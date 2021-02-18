@@ -1,6 +1,6 @@
 <div class="title">
   <div class=""></div>
-  <h1 class="">Your basket</h1>
+  <h1 class="">Order summary</h1>
   <div class=""></div>
 </div>
 
@@ -27,37 +27,71 @@
     </tbody>
   </table>
 
-  <div class="right-side">
+  <div class="main-summary">
     <div class="methods">
+      <header class="header">Chosen payment method</header>
       <div class="payment-wrapper">
-        <header class="header">Choose payment method</header>
         <img [src]="'/assets/payment/' + orderStage$.payment.url" class="img">
         <p class="payment-name">{{ orderStage$.payment.paymentMethod }}</p>
+        <p class="payment-desc">{{ orderStage$.payment.description }}</p>
       </div>
 
+      <header class="header">Chosen a shipping method</header>
       <div class="payment-wrapper">
-        <header class="header">Choose a shipping method</header>
         <img [src]="'/assets/shipment/' + orderStage$.shipment.url" class="img">
         <p class="payment-name">{{ orderStage$.shipment.shipmentMethod }}</p>
+        <p class="payment-desc">{{ orderStage$.shipment.description }}</p>
       </div>
     </div>
 
-    <div class="summary">
-      <div class="summary-1">
-        <p class="products-price">products price:</p>
-        <p class="shipment-price">shipment price:</p>
-        <p class="total-price">total price:</p>
-      </div>
-      <div class="summary-2">
-        <p class="products-price-value">{{total}} zł</p>
-        <p class="shipment-price-value">{{shipmentPrice}} zł</p>
-        <p class="total-price-value">{{total + shipmentPrice}} zł</p>
+    <div class="summary-wrapper">
+      <header class="header">Summary of the costs</header>
+      <div class="summary">
+        <div class="summary-1">
+          <p class="products-price">products price:</p>
+          <p class="shipment-price">shipment price:</p>
+          <p class="total-price">total price:</p>
+        </div>
+        <div class="summary-2">
+          <p class="products-price-value">{{total}} zł</p>
+          <p class="shipment-price-value">{{orderStage$?.shipment?.shipmentCost}} zł</p>
+          <p class="total-price-value">{{total + orderStage$?.shipment?.shipmentCost}} zł</p>
+        </div>
       </div>
     </div>
-
   </div>
-
 </div>
+
+<div class="address">
+  <div class="address-item" *ngFor="let address of orderStage$?.addresses">
+    <p class="header">Contact details of {{address.contactType}} address</p>
+    <div class="data-wrapper">
+      <div class="address-left">
+        <p class="data">First name:</p>
+        <p class="data">Last name:</p>
+        <p class="data">E-mail:</p>
+        <p class="data">Phone:</p>
+        <p class="data">Street:</p>
+        <p class="data">Apartment number:</p>
+        <p class="data">Zip code:</p>
+        <p class="data">City:</p>
+        <p class="data">Additional info:</p>
+      </div>
+
+      <div class="address-right">
+        <p>{{address.firstName}}</p>
+        <p>{{address.lastName}}</p>
+        <p>{{address.email}}</p>
+        <p>{{address.phone}}</p>
+        <p>{{address.street}}</p>
+        <p>{{address.apartmentNumber}}</p>
+        <p>{{address.zipCode}}</p>
+        <p>{{address.city}}</p>
+        <p>{{address?.description}}</p>
+      </div>
+    </div>
+  </div>
+  </div>
 
 <div class="buttons">
   <button class="btn-back" type="button" routerLink="/addresses">back</button>
