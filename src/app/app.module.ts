@@ -21,6 +21,9 @@ import { PaginationComponent } from './pagination/pagination.component';
 import {ProductDetailsComponent} from './product-details/product-details.component';
 import { BasketComponent } from './basket/basket.component';
 import { FooterComponent } from './footer/footer.component';
+import { PaymentComponent } from './payment/payment.component';
+import { ShipmentComponent } from './shipment/shipment.component';
+import { AddressComponent } from './address/address.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
@@ -36,6 +39,10 @@ import { HomePageComponent } from './home-page/home-page.component';
     PaginationComponent,
     ProductDetailsComponent,
     BasketComponent,
+    FooterComponent,
+    PaymentComponent,
+    ShipmentComponent,
+    AddressComponent,
     FooterComponent,
     HomePageComponent
 

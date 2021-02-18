@@ -101,6 +101,7 @@ export class AuthService {
     this.localStorage.clear('expiresAt');
     this.localStorage.clear('userrole');
     this.localStorage.clear('basket');
+    this.localStorage.clear('orderState');
   }
 
   getJwtToken() {
