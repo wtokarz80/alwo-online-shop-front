@@ -255,7 +255,7 @@ header {
 
 .buttons {
   width: 80%;
-  margin: 3em auto 0 auto;
+  margin: 3em auto 2em auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -265,3 +265,32 @@ header {
   cursor: pointer;
 }
 
+.address {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.address-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+  line-height: 1.4em;
+  font-size: 1.2em;
+}
+
+.data-wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.header {
+  margin-bottom: 1em;
+}
+
+.address-right {
+  margin-left: 5em;
+}

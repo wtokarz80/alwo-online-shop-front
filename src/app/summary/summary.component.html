@@ -54,13 +54,44 @@
         </div>
         <div class="summary-2">
           <p class="products-price-value">{{total}} zł</p>
-          <p class="shipment-price-value">{{shipmentPrice}} zł</p>
-          <p class="total-price-value">{{total + shipmentPrice}} zł</p>
+          <p class="shipment-price-value">{{orderStage$?.shipment?.shipmentCost}} zł</p>
+          <p class="total-price-value">{{total + orderStage$?.shipment?.shipmentCost}} zł</p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<div class="address">
+  <div class="address-item" *ngFor="let address of orderStage$?.addresses">
+    <p class="header">Contact details of {{address.contactType}} address</p>
+    <div class="data-wrapper">
+      <div class="address-left">
+        <p class="data">First name:</p>
+        <p class="data">Last name:</p>
+        <p class="data">E-mail:</p>
+        <p class="data">Phone:</p>
+        <p class="data">Street:</p>
+        <p class="data">Apartment number:</p>
+        <p class="data">Zip code:</p>
+        <p class="data">City:</p>
+        <p class="data">Additional info:</p>
+      </div>
+
+      <div class="address-right">
+        <p>{{address.firstName}}</p>
+        <p>{{address.lastName}}</p>
+        <p>{{address.email}}</p>
+        <p>{{address.phone}}</p>
+        <p>{{address.street}}</p>
+        <p>{{address.apartmentNumber}}</p>
+        <p>{{address.zipCode}}</p>
+        <p>{{address.city}}</p>
+        <p>{{address?.description}}</p>
+      </div>
+    </div>
+  </div>
+  </div>
 
 <div class="buttons">
   <button class="btn-back" type="button" routerLink="/addresses">back</button>
