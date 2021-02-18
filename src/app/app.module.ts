@@ -24,6 +24,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ShipmentComponent } from './shipment/shipment.component';
 import { AddressComponent } from './address/address.component';
+import { SummaryComponent } from './summary/summary.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { AddressComponent } from './address/address.component';
     FooterComponent,
     PaymentComponent,
     ShipmentComponent,
-    AddressComponent
+    AddressComponent,
+    SummaryComponent,
+    ConfirmationComponent
 
   ],
     imports: [

@@ -3,7 +3,7 @@ import {Address} from '../models/address';
 import {AddressService} from '../services/address.service';
 import {Location} from '@angular/common';
 import {OrderService} from '../services/order.service';
-import {FormGroup, FormBuilder, FormArray, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, FormArray, Validators, FormControl} from '@angular/forms';
 import {OrderStage} from '../models/orderStage';
 import {Shipment} from '../models/shipment';
 import {Payment} from '../models/payment';
@@ -39,7 +39,6 @@ export class AddressComponent implements OnInit {
     });
     this.orderService.getStage().subscribe(
       data => {
-        console.log(data);
         this.orderStage$ = data;
         if (data.shipment) {
           this.shipment = data.shipment;
@@ -50,7 +49,6 @@ export class AddressComponent implements OnInit {
       });
     this.basketService.getBasketProducts$().subscribe((data: BasketProductDto[]) => {
       this.productCost = data.reduce((sum, curr) => sum + (curr.price * curr.quantity), 0);
-      console.log(data);
     });
 
   }
@@ -87,8 +85,24 @@ export class AddressComponent implements OnInit {
   }
 
   submitHandler(): void {
-
-    console.log({...this.nestedForm.value});
+    this.addresses = [];
+    for (const formGroup of this.addressArray.controls){
+      const address = new Address();
+      address.firstName = formGroup.get('firstName').value;
+      address.lastName = formGroup.get('lastName').value;
+      address.email = formGroup.get('email').value;
+      address.phone = formGroup.get('phone').value;
+      address.street = formGroup.get('street').value;
+      address.apartmentNumber = formGroup.get('apartmentNumber').value;
+      address.zipCode = formGroup.get('zipCode').value;
+      address.city = formGroup.get('city').value;
+      address.description = formGroup.get('description').value;
+      address.contactType = formGroup.get('contactType').value;
+      this.addresses.push(address);
+    }
+    // console.log({...this.nestedForm.value});
+    this.orderStage$.addresses = this.addresses;
+    this.orderService.setState(this.orderStage$);
+    console.log(this.orderStage$);
   }
 }
-
