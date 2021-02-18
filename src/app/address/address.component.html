@@ -8,14 +8,14 @@
           <h4>Contact details</h4>
           <div class="form-group">
             <div class="first-name">
-              <label for="first-name">First Name</label>
-              <input type="text" formControlName="firstName" id="first-name" class="input" name="first-name"
+              <label>First Name</label>
+              <input type="text" formControlName="firstName" class="input" name="first-name"
                      placeholder="Enter first name"
                      required autofocus>
             </div>
             <div class="last-name">
-              <label for="last-name">Last Name</label>
-              <input type="text" formControlName="lastName" id="last-name" class="input" name="last-name"
+              <label>Last Name</label>
+              <input type="text" formControlName="lastName" class="input" name="last-name"
                      placeholder="Enter last name"
                      required autofocus>
             </div>
@@ -23,14 +23,14 @@
 
           <div class="form-group">
             <div class="email">
-              <label for="email">Email</label>
-              <input type="text" formControlName="email" id="email" class="input" name="email"
+              <label>Email</label>
+              <input type="text" formControlName="email" class="input" name="email"
                      placeholder="Enter email"
                      required autofocus>
             </div>
             <div class="phone">
-              <label for="phone">Phone number</label>
-              <input type="text" formControlName="phone" id="phone" class="input" name="phone"
+              <label>Phone number</label>
+              <input type="text" formControlName="phone" class="input" name="phone"
                      placeholder="Enter phone number"
                      required autofocus>
             </div>
@@ -40,14 +40,14 @@
 
           <div class="form-group">
             <div class="street">
-              <label for="street">Street</label>
-              <input type="text" formControlName="street" id="street" class="input" name="street"
+              <label>Street</label>
+              <input type="text" formControlName="street" class="input" name="street"
                      placeholder="Enter street name"
                      required autofocus>
             </div>
             <div class="apartment-number">
-              <label for="apartment-number">Apartment number</label>
-              <input type="text" formControlName="apartmentNumber" id="apartment-number" class="input" name="apartment-number"
+              <label>Apartment number</label>
+              <input type="text" formControlName="apartmentNumber" class="input" name="apartment-number"
                      placeholder="Enter apartment number"
                      required autofocus>
             </div>
@@ -55,14 +55,14 @@
 
           <div class="form-group">
             <div class="zip-code">
-              <label for="zip-code">Zip code</label>
-              <input type="text" formControlName="zipCode" id="zip-code" class="input" name="zip-code"
+              <label>Zip code</label>
+              <input type="text" formControlName="zipCode" class="input" name="zip-code"
                      placeholder="Enter zip code"
                      required autofocus>
             </div>
             <div class="city">
-              <label for="city">City</label>
-              <input type="text" formControlName="city" id="city" class="input" name="city"
+              <label>City</label>
+              <input type="text" formControlName="city" class="input" name="city"
                      placeholder="Enter city name"
                      required autofocus>
             </div>
@@ -70,13 +70,13 @@
 
           <div class="form-group">
             <div class="description">
-              <label for="description">Description</label>
-              <input type="text" formControlName="description" id="description" class="input" name="description"
+              <label>Description</label>
+              <input type="text" formControlName="description" class="input" name="description"
                      placeholder="Enter description">
             </div>
             <div class="contact-type">
-              <label for="contact-type">Address type</label>
-              <select formControlName="contactType" name="contact-type" id="contact-type"
+              <label>Address type</label>
+              <select formControlName="contactType" name="contact-type"
                       [ngClass]="{'input': true, 'is-invalid': !group.get('contactType').valid && group.get('contactType').touched}">
                 <option selected [ngValue]="null">Choose...</option>
                 <option *ngFor="let item of addressTypes" [value]="item">{{item}}</option>
@@ -87,37 +87,74 @@
 
 
           <div class="control-buttons">
-            <button class="btn-add" type="button" (click)="addAddress()">add</button>
-            <button class="btn-del" type="button"
-                    (click)="removeAddress(i)">del
-            </button>
+            <header class="header" *ngIf="addressArray.length < 2">Add address<button class="btn-add" type="button"
+                                                       (click)="addAddress()">+
+            </button></header>
+
+            <header class="header" *ngIf="addressArray.length > 1">Remove address<button class="btn-del" type="button"
+                                                          (click)="removeAddress(i)">X
+            </button></header>
           </div>
 
         </div>
       </div>
-      <div class="col-2">
-<!--        <button type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()"-->
-<!--                class="btn btn-primary">Submit</button>-->
-      </div>
+
     </form>
+
+
+
   </div>
 
-  <div class="summary">
-    <h4>Summary of the costs</h4>
-    <p>{{shipment.shipmentMethod}}</p>
-    <p>{{payment.paymentMethod}}</p>
-    <p>{{productCost}}</p>
-    <p>{{shipment.shipmentCost}}</p>
-    <p>{{productCost + shipment.shipmentCost}}</p>
-  </div>
+  <div class="main-summary">
+    <div class="methods">
+      <header class="header">Chosen payment method</header>
+      <div class="payment-wrapper">
+        <img [src]="'/assets/payment/' + orderStage?.payment.url" class="img">
+        <p class="payment-name">{{ orderStage?.payment.paymentMethod }}</p>
+        <p class="payment-desc">{{ orderStage?.payment.description }}</p>
+      </div>
 
+      <header class="header">Chosen a shipping method</header>
+      <div class="payment-wrapper">
+        <img [src]="'/assets/shipment/' + orderStage?.shipment.url" class="img">
+        <p class="payment-name">{{ orderStage?.shipment.shipmentMethod }}</p>
+        <p class="payment-desc">{{ orderStage?.shipment.description }}</p>
+      </div>
+    </div>
+
+    <div class="summary-wrapper">
+      <header class="header">Summary of the costs</header>
+      <div class="summary">
+        <div class="summary-1">
+          <p class="products-price">products price:</p>
+          <p class="shipment-price">shipment price:</p>
+          <p class="total-price">total price:</p>
+        </div>
+        <div class="summary-2">
+          <p class="products-price-value">{{productCost}} zł</p>
+          <p class="shipment-price-value">{{orderStage?.shipment?.shipmentCost}} zł</p>
+          <p class="total-price-value">{{productCost + orderStage?.shipment?.shipmentCost}} zł</p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
+<!--  <div class="summary">-->
+<!--    <h4>Summary of the costs</h4>-->
+<!--    <p>{{orderStage?.shipment?.shipmentMethod}}</p>-->
+<!--    <p>{{orderStage?.payment?.paymentMethod}}</p>-->
+<!--    <p>{{productCost}}</p>-->
+<!--    <p>{{orderStage?.shipment?.shipmentCost}}</p>-->
+<!--    <p>{{productCost + orderStage?.shipment?.shipmentCost}}</p>-->
+<!--  </div>-->
 
 
 <div class="buttons">
   <button class="btn-back" type="button" routerLink="/basket">back</button>
   <button
     [ngClass]="{'btn-next': !nestedForm.invalid}"
-    type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()" routerLink="/summary">next</button>
+    type="button"  (click)="submitHandler()" routerLink="/summary">next</button>
 </div>
+
+<!--[disabled]="nestedForm.invalid"-->

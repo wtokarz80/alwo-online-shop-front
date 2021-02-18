@@ -57,6 +57,7 @@
 
 .content-table {
   margin: 0 auto;
+  width: 80%;
   border-collapse: collapse;
   border-radius: 5px 5px 0 0;
   overflow: hidden;
@@ -114,7 +115,7 @@
 
 .buttons {
   width: 80%;
-  margin: 3em auto 0 auto;
+  margin: 3em auto 2em auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -132,11 +133,28 @@
   cursor: pointer;
 }
 
+.methods {
+  margin-right: 2em;
+}
+
+.summary-wrapper {
+display: flex;
+  flex-direction: column;
+}
+
+.main-summary {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 2em auto;
+  width: 80%;
+}
+
 .summary {
-  /*margin: 2em 10em 5em auto;*/
-  margin: 2em 0 4em 25vw;
-  width: 50%;
-  min-width: 300px;
+  margin-top: 1em;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,12 +162,11 @@
 
 .summary-1 {
   width: 70%;
-  text-align: end;
+  text-align: start;
 }
 
 .summary-2 {
   width: 30%;
-  margin-right: 2em;
   text-align: end;
 
 }
@@ -181,21 +198,14 @@
 }
 
 header {
+  font-size: 1.2em;
   margin-top: 1em;
 }
 .payment-wrapper {
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1em;
-  margin-right: 1em;
-}
-
-.payment {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   list-style: none;
   min-height: 80px;
   width: 400px;

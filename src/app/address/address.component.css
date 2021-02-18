@@ -1,11 +1,28 @@
 .address-section {
   width: 80%;
-  margin: 3em auto 0 auto;
+  margin: 0 auto 0 auto;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
 
+}
+.address-body {
+  width: 600px;
+  margin-left: auto;
+}
+
+.address-item {
+  margin-top: 3em;
+}
+header {
+  font-size: 1.2em;
+  margin-top: 1em;
+}
+
+.total-price-value {
+  font-weight: bold;
+  border-bottom: 1px solid gray;
 }
 
 h4 {
@@ -26,9 +43,9 @@ h4 {
   margin-right: 2em;
 }
 
-.summary {
-  margin-left: 2em;
-}
+/*.summary {*/
+/*  margin-left: 2em;*/
+/*}*/
 
 
 .btn-back, .btn-next {
@@ -43,17 +60,109 @@ h4 {
 
 .buttons {
   width: 80%;
-  margin: 3em auto 0 auto;
+  margin: 3em auto 2em auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.btn-del, .btn-back, .btn-next:hover {
+.btn-del, .btn-add, .btn-back, .btn-next:hover {
   cursor: pointer;
 }
 
 .is-invalid {
   border: 2px solid red;
+}
+
+.img {
+  width: 69px;
+  height: 47px;
+  margin-right: 1em;
+}
+.payment-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  list-style: none;
+  min-height: 80px;
+  width: 400px;
+  border: 1px solid gray;
+  margin-bottom: 1em;
+}
+
+.methods {
+  margin-right: 2em;
+}
+
+.summary-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 4em 0 2em 6em;
+  width: 80%;
+}
+
+.summary {
+  margin-top: 1em;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.summary-1 {
+  width: 70%;
+  text-align: start;
+}
+
+.summary-2 {
+  width: 30%;
+  text-align: end;
+
+}
+
+.summary p {
+  line-height: 1.5em;
+  font-size: 1.3em;
+}
+
+.input {
+  line-height: 1.5em;
+  font-size: 1.1em;
+}
+
+.btn-add, .btn-del {
+  height: 1.8em;
+  width: 1.8em;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.btn-add {
+  margin-left: 7em;
+  background: rgba(33, 127, 215, 1);
+  color: white;
+}
+
+.btn-del {
+  background: #A71E1E;
+  color: white;
+  margin-left: 1em;
+}
+
+.control-buttons {
+display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 2em;
 }
 
