@@ -8,9 +8,10 @@ import {BasketComponent} from './basket/basket.component';
 import {AddressComponent} from './address/address.component';
 import {SummaryComponent} from './summary/summary.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
+import {HomePageComponent} from './home-page/home-page.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/books', pathMatch: 'full'},
+  {path: '', component: HomePageComponent},
   {path: 'basket', component: BasketComponent},
   {path: 'address', component: AddressComponent},
   {path: 'summary', component: SummaryComponent},

@@ -46,4 +46,11 @@ export class ProductService {
       tap(product => this.product = product)
     );
   }
+
+  public getProductsByCategory(category?: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${environment.API_URL}/products?categories=${category}`).pipe(
+      tap(products => this.products = products)
+    );
+  }
+
 }
