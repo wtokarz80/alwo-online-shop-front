@@ -96,8 +96,8 @@
         </div>
       </div>
       <div class="col-2">
-        <button type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()"
-                class="btn btn-primary">Submit</button>
+<!--        <button type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()"-->
+<!--                class="btn btn-primary">Submit</button>-->
       </div>
     </form>
   </div>
@@ -117,5 +117,7 @@
 
 <div class="buttons">
   <button class="btn-back" type="button" routerLink="/basket">back</button>
-  <button class="btn-next" type="button" routerLink="/checkout">next</button>
+  <button
+    [ngClass]="{'btn-next': !nestedForm.invalid}"
+    type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()" routerLink="/summary">next</button>
 </div>

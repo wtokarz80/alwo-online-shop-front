@@ -24,6 +24,8 @@ import { FooterComponent } from './footer/footer.component';
 import { PaymentComponent } from './payment/payment.component';
 import { ShipmentComponent } from './shipment/shipment.component';
 import { AddressComponent } from './address/address.component';
+import { SummaryComponent } from './summary/summary.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 
 @NgModule({
@@ -43,6 +45,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     PaymentComponent,
     ShipmentComponent,
     AddressComponent,
+    SummaryComponent,
+    ConfirmationComponent,
     FooterComponent,
     HomePageComponent
 
