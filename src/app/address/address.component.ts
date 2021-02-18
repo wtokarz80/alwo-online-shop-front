@@ -19,7 +19,6 @@ import {BasketService} from '../services/basket.service';
 export class AddressComponent implements OnInit {
 
   addresses: Address[] = [];
-  model: Partial<Address> = {};
   addressTypes: Array<string> = ['INVOICE', 'DELIVERY'];
   nestedForm: FormGroup;
   orderStage$: OrderStage;
