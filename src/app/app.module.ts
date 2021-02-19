@@ -27,6 +27,7 @@ import { AddressComponent } from './address/address.component';
 import { SummaryComponent } from './summary/summary.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { ContactPageComponent } from './contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     SummaryComponent,
     ConfirmationComponent,
     FooterComponent,
-    HomePageComponent
+    HomePageComponent,
+    ContactPageComponent
 
   ],
     imports: [

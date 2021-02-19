@@ -9,6 +9,7 @@ import {AddressComponent} from './address/address.component';
 import {SummaryComponent} from './summary/summary.component';
 import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {HomePageComponent} from './home-page/home-page.component';
+import {ContactPageComponent} from './contact-page/contact-page.component';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -20,7 +21,8 @@ const routes: Routes = [
   {path: 'sign-up', component: SignupComponent},
   {path: 'login', component: LoginComponent},
   {path: 'books', component: MainComponent},
-  {path: 'product/:id', component: ProductDetailsComponent}
+  {path: 'product/:id', component: ProductDetailsComponent},
+  {path: 'contact', component: ContactPageComponent},
 ];
 
 @NgModule({
