@@ -50,7 +50,9 @@
   </div>
   <div class="buttons">
     <button class="btn-back" type="button" (click)="back()">back</button>
-    <button *ngIf="orderStage$.payment && orderStage$.shipment" class="btn-next" type="button" routerLink="/address">next
+    <button
+      [ngClass]="{'btn-next': orderStage$.payment && orderStage$.shipment, 'btn-non-active': !(orderStage$.payment && orderStage$.shipment)}"
+      type="button" [disabled]="!(orderStage$.payment && orderStage$.shipment)" routerLink="/address">next
     </button>
   </div>
 

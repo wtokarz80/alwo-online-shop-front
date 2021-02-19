@@ -48,7 +48,7 @@ h4 {
 /*}*/
 
 
-.btn-back, .btn-next {
+.btn-back, .btn-next, .btn-non-active {
   width: 5em;
   line-height: 1.5em;
   font-size: 1em;
@@ -56,6 +56,9 @@ h4 {
   color: white;
   border-radius: 5px;
   transition: all 0.3s ease-out;
+}
+.btn-non-active {
+  background: rgba(33, 127, 215, 0.5);
 }
 
 .buttons {

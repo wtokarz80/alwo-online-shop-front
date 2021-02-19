@@ -140,21 +140,11 @@
   </div>
 </div>
 
-<!--  <div class="summary">-->
-<!--    <h4>Summary of the costs</h4>-->
-<!--    <p>{{orderStage?.shipment?.shipmentMethod}}</p>-->
-<!--    <p>{{orderStage?.payment?.paymentMethod}}</p>-->
-<!--    <p>{{productCost}}</p>-->
-<!--    <p>{{orderStage?.shipment?.shipmentCost}}</p>-->
-<!--    <p>{{productCost + orderStage?.shipment?.shipmentCost}}</p>-->
-<!--  </div>-->
-
-
 <div class="buttons">
   <button class="btn-back" type="button" routerLink="/basket">back</button>
   <button
-    [ngClass]="{'btn-next': !nestedForm.invalid}"
-    type="button"  (click)="submitHandler()" routerLink="/summary">next</button>
+    [ngClass]="{'btn-next': !nestedForm.invalid, 'btn-non-active': nestedForm.invalid}"
+    type="button" [disabled]="nestedForm.invalid" (click)="submitHandler()" routerLink="/summary">next</button>
 </div>
 
-<!--[disabled]="nestedForm.invalid"-->
+

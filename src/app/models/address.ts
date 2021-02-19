@@ -10,7 +10,10 @@ export class Address {
   city: string;
   description: string;
   contactType: string;
+
 }
+
+
 
 enum ContactType {
   DELIVERY = 'DELIVERY',

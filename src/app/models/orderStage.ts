@@ -1,6 +1,7 @@
 import {Shipment} from './shipment';
 import {Payment} from './payment';
 import {Address} from './address';
+import {BasketProductDto} from './basketProductDto';
 
 export class OrderStage {
 

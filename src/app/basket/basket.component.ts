@@ -72,8 +72,4 @@ export class BasketComponent implements OnInit {
     this.shipmentPrice = shipment.shipmentCost;
   }
 
-
-  next(): void {
-    console.log('not implemented yet');
-  }
 }

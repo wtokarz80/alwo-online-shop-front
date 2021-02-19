@@ -42,7 +42,6 @@ export class AddressComponent implements OnInit, OnDestroy {
     this.nestedForm = this.formBuilder.group({
       address: this.formBuilder.array([this.addAddressGroup()])
     });
-    console.log('generate form');
     this.orderServiceGetStageSubscription = this.orderService.getStage().subscribe(
       data => {
         this.orderStage = data;
