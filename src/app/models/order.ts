@@ -3,5 +3,10 @@ import {OrderedProduct} from './orderedProduct';
 
 export class Order {
 
-  constructor(public paymentId: number, public shipmentId: number, public addresses: Address[], public orderedProducts: OrderedProduct[]){}
+  paymentId: number;
+  shipmentId: number;
+  addresses: Address[];
+  orderedProducts: OrderedProduct[];
+
+  constructor(){}
 }

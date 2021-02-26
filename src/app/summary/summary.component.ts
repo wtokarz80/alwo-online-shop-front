@@ -5,6 +5,8 @@ import {BasketProductDto} from '../models/basketProductDto';
 import {map} from 'rxjs/operators';
 import {BasketService} from '../services/basket.service';
 import {OrderService} from '../services/order.service';
+import {Order} from '../models/order';
+import {OrderedProduct} from '../models/orderedProduct';
 
 @Component({
   selector: 'app-summary',
@@ -17,6 +19,7 @@ export class SummaryComponent implements OnInit {
   // shipmentPrice = 0;
   orderStage$: OrderStage;
   basketProductsDto: Observable<BasketProductDto[]>;
+  private orderedProducts: OrderedProduct[] = [];
 
 
   constructor(private  basketService: BasketService,
@@ -33,6 +36,10 @@ export class SummaryComponent implements OnInit {
         data.sort((a, b) => {
           return a.name < b.name ? -1 : 1;
         });
+        data.forEach( product => {
+          const orderedProduct = new OrderedProduct(product.productId, product.quantity);
+          this.orderedProducts.push(orderedProduct);
+        });
         return data;
       }),
     ).subscribe((data: BasketProductDto[]) => {
@@ -42,6 +49,13 @@ export class SummaryComponent implements OnInit {
 
 
   submitOrder(): void {
-    console.log('order submitted');
+    const order: Order = new Order();
+    order.addresses = this.orderStage$.addresses;
+    order.orderedProducts = this.orderedProducts;
+    order.paymentId = this.orderStage$.payment.id;
+    order.shipmentId = this.orderStage$.shipment.id;
+    this.orderService.clearLocalStorage();
+    console.log(order);
+    this.orderService.postOrder(order).subscribe();
   }
 }
