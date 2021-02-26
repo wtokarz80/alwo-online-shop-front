@@ -28,6 +28,7 @@ import { SummaryComponent } from './summary/summary.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
+import { InpostComponent } from './inpost/inpost.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ContactPageComponent } from './contact-page/contact-page.component';
     ConfirmationComponent,
     FooterComponent,
     HomePageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    InpostComponent
 
   ],
     imports: [
