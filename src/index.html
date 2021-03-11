@@ -17,7 +17,9 @@
         searchType: 'osm',
       });
       var map = easyPack.mapWidget('easypack-map', function(point) {
-        console.log(point);
+        // console.log(point);
+        const event = new CustomEvent('locker', {detail: point});
+        window.dispatchEvent(event);
       });
     };
   </script>
