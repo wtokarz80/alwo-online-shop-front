@@ -2,18 +2,49 @@
   margin: 0 51px 21px;
 }
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+
+
 .img {
   width: 1000px;
   height: 350px;
   margin: 30px auto 20px;
 }
 
+.contact-wrapper {
+  margin-left: 5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+
+}
+
+.contact-wrapper-2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.address {
+  margin-top: 1em;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 158%;
+
+}
+
+
 .contact {
   font-family: Overpass;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
-  line-height: 158%;
   display: flex;
   align-items: center;
   text-align: center;
@@ -32,12 +63,50 @@
 }
 
 .email-wrapper {
+  max-width: 500px;
+  min-width: 300px;
+  margin-right: 5em;
+  margin-left: 2em;
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.title {
+  margin-bottom: 0.5em;
+  font-size: 1.5em;
+  text-transform: uppercase;
+}
+
+.info {
+  font-family: Overpass;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.2em;
+  line-height: 158%;
+}
+
+#email {
   border-radius: 50px;
   line-height: 2em;
-  width: 25vw;
-  min-width: 10em;
-  margin-right: 5em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  width: 100%;
+  /*min-width: 10em;*/
+  margin: 1.2em auto;
+  padding-left: 1em;
+}
+
+.btn-sign {
+  margin: 1em auto;
+  width: 8em;
+  line-height: 2em;
+  font-size: 1em;
+  background: rgba(33, 127, 215, 1);
+  color: white;
+  border-radius: 50px;
+  transition: all 0.3s ease-out;
+}
+
+.btn-sign:hover {
+  cursor: pointer;
 }

@@ -51,7 +51,8 @@
   <div class="buttons">
     <button class="btn-back" type="button" (click)="back()">back</button>
     <button
-      [ngClass]="{'btn-next': orderStage$.payment && orderStage$.shipment, 'btn-non-active': !(orderStage$.payment && orderStage$.shipment)}"
+      [ngClass]="{'btn-next': orderStage$.payment && orderStage$.shipment, 'btn-non-active':
+      !(orderStage$?.payment && orderStage$?.shipment?.shipmentMethod)}"
       type="button" [disabled]="!(orderStage$.payment && orderStage$.shipment)" routerLink="/address">next
     </button>
   </div>
@@ -61,7 +62,7 @@
 <ng-template #emptyBasket>
   <div class="empty-basket">
     <p> your basket is empty</p>
-    <button class="btn-back" type="button" (click)="back()">back</button>
+    <button class="btn-back" type="button" routerLink="/">back</button>
   </div>
 </ng-template>
 

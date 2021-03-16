@@ -42,3 +42,7 @@ ul {
   font-weight: 700;
   font-size: 18px;
 }
+
+.category-item:hover {
+  cursor: pointer;
+}

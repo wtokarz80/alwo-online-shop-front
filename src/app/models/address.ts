@@ -1,5 +1,6 @@
 export class Address {
   id?: number;
+  // lockerName?: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -15,7 +16,11 @@ export class Address {
 
 
 
-enum ContactType {
+
+
+
+export enum ContactType {
   DELIVERY = 'DELIVERY',
   INVOICE = 'INVOICE',
+  PARCEL = 'PARCEL',
 }

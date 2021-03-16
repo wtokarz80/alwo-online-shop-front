@@ -3,6 +3,7 @@ import {Shipment} from '../models/shipment';
 import {ShipmentService} from '../services/shipment.service';
 import {OrderService} from '../services/order.service';
 import {OrderStage} from '../models/orderStage';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shipment',
@@ -17,7 +18,8 @@ export class ShipmentComponent implements OnInit {
   orderStage$: OrderStage;
 
   constructor(public shipmentService: ShipmentService,
-              public orderService: OrderService) { }
+              public orderService: OrderService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.shipmentService.getAllShipments().subscribe(data => {
@@ -36,6 +38,10 @@ export class ShipmentComponent implements OnInit {
   onSelectShipment(shipment: Shipment): void {
     this.orderStage$.shipment = shipment;
     this.orderService.setState(this.orderStage$);
+
+    if (shipment.shipmentMethod === 'Parcel locker'){
+      this.router.navigateByUrl('/inpost');
+    }
   }
 
 }

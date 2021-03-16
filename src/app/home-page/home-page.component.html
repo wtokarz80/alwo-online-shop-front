@@ -1,10 +1,15 @@
-<img [src]="'/assets/homePage.jpg'" class="img">
-<p>Bestsellers</p>
-<hr class="pagination-separator"/>
+<div class="wrapper">
+  <img [src]="'/assets/homePage.jpg'" class="img">
+  <p>Bestsellers</p>
+  <hr class="pagination-separator"/>
 
-<div class="products-wrapper">
-  <app-product *ngFor="let product of productService.products"
-               [product]=product
-               [routerLink]="'/product/' + product.id" ></app-product>
+  <div class="products-wrapper">
+    <app-product *ngFor="let product of productService.products"
+                 [product]=product
+                 [routerLink]="'/product/' + product.id" ></app-product>
+  </div>
+
 </div>
+
+
 
