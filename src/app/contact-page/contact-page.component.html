@@ -1,20 +1,46 @@
-<img [src]="'/assets/localization.png'" class="img">
 
-<div class="contact">
-  <img [src]="'/assets/icons/logo.png'" class="logo-wrapper">
-  <h2>BOOKSTORE</h2>
+
+<div class="container">
+  <img [src]="'/assets/localization.png'" class="img">
+
+  <div class="contact-wrapper">
+
+    <div class="contact-wrapper-2">
+      <div class="contact">
+        <img [src]="'/assets/icons/logo.png'" class="logo-wrapper">
+        <h2>BOOKSTORE</h2>
+      </div>
+
+      <div class="address">
+        <p> ALWO BOOKSTORE</p>
+        <p> ul. Rzemieślnicza 20/2</p>
+        <p> 30-363 Cracow</p>
+        <p>  tel: +48 666 999 666</p>
+        <p> e-mail: alwo@office.eu</p>
+      </div>
+    </div>
+
+
+
+    <div class="email-wrapper">
+      <p class="title">stay updated</p>
+      <p class="info">If you don't want to miss something, subscribe to our newsletter. We only inform about matters
+        important to
+        our
+        readers.</p>
+      <div class="email">
+        <label for="email"></label>
+        <input id="email" name="email" type="text" placeholder="email:" [formControl]="emailInput"/>
+      </div>
+      <button class="btn-sign" type="button" (click)="signIn()">SIGN IN</button>
+    </div>
+
+  </div>
+
+
 </div>
 
-<p> ALWO BOOKSTORE</p>
-<p> ul. Rzemieślnicza 20/2</p>
-<p> 30-363 Cracow</p>
-<p>  tel: +48 666 999 666</p>
-<p> e-mail: alwo@office.eu</p>
 
-<div class="email-wrapper">
-  <label for="email"></label>
 
-  <input id="email" name="email" type="text" placeholder="email:" [formControl]="emailInput"/>
 
-  <button class="btn-sign" type="button" (click)="signIn()">SIGN IN</button>
-</div>
+

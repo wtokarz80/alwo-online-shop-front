@@ -81,17 +81,20 @@ export class AddressComponent implements OnInit, OnDestroy {
     }
   }
 
-  removeAddress(index: number): void {
+  removeAddress(index: number, value: string): void {
     if (this.addressArray.length > 1){
       this.addressArray.removeAt(index);
     }
-      for (let i = 0; i < this.orderStage.addresses.length; i++){
-        if (this.orderStage.addresses[i].firstName === 'Parcel locker'){
-          this.orderStage.addresses.splice(i, 1);
-          this.orderStage.shipment = {} as Shipment;
-          this.router.navigateByUrl('/basket');
-        }
+    for (let i = 0; i < this.orderStage.addresses.length; i++){
+      if (this.orderStage.addresses[i].firstName === value){
+        this.orderStage.addresses.splice(i, 1);
+        this.orderService.setState(this.orderStage);
       }
+    }
+    if (value as string === 'Parcel locker') {
+      this.orderStage.shipment = {} as Shipment;
+      this.router.navigateByUrl('/basket');
+    }
   }
 
   submitHandler(): void {
@@ -107,10 +110,11 @@ export class AddressComponent implements OnInit, OnDestroy {
       address.city = formGroup.get('city').value;
       address.description = formGroup.get('description').value;
       address.contactType = formGroup.get('contactType').value;
-      if (this.orderStage.addresses && formGroup.get('firstName').value !== 'Parcel locker' && this.addresses.length < 2){
+      if (this.orderStage.addresses && formGroup.get('firstName').value !== 'Parcel locker'
+        && formGroup.get('firstName').value !== '' && this.orderStage.addresses.length < 2){
         this.orderStage.addresses.push(address);
       }
-      if (this.addresses.length < 2){
+      else if (!this.orderStage.addresses){
         this.addresses.push(address);
         this.orderStage.addresses = this.addresses;
       }
