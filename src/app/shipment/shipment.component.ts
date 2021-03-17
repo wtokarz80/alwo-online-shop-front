@@ -40,8 +40,8 @@ export class ShipmentComponent implements OnInit {
     this.orderStage$.shipment = shipment;
 
     if (shipment.shipmentMethod === 'Parcel locker'){
+      this.checkAddresses();
       this.router.navigateByUrl('/inpost');
-      // this.redirectTo('/inpost');
     }
     if (shipment.shipmentMethod !== 'Parcel locker'){
       this.orderStage$.inpost = new Inpost();
@@ -53,4 +53,9 @@ export class ShipmentComponent implements OnInit {
   //   this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
   //     this.router.navigate([uri]));
   // }
+  private checkAddresses(): void {
+    if (this.orderStage$.addresses){
+      this.orderStage$.addresses = this.orderStage$.addresses.filter(obj => obj.contactType !== 'DELIVERY');
+    }
+  }
 }
