@@ -7,6 +7,8 @@ import {BasketService} from '../services/basket.service';
 import {OrderService} from '../services/order.service';
 import {Order} from '../models/order';
 import {OrderedProduct} from '../models/orderedProduct';
+import {Address} from '../models/address';
+import {Inpost} from '../models/inpost';
 
 @Component({
   selector: 'app-summary',
@@ -20,6 +22,7 @@ export class SummaryComponent implements OnInit {
   orderStage$: OrderStage;
   basketProductsDto: Observable<BasketProductDto[]>;
   private orderedProducts: OrderedProduct[] = [];
+  isParcelLocker = false;
 
 
   constructor(private  basketService: BasketService,
@@ -29,7 +32,9 @@ export class SummaryComponent implements OnInit {
     this.basketProductsDto = this.basketService.getBasketProducts$();
     this.orderService.getStage().subscribe(
       data => {
-        this.orderStage$ = data; }
+        this.orderStage$ = data;
+        this.checkIfParcelLocker(data);
+      }
     );
     this.basketService.getBasketProducts$().pipe(
       map((data) => {
@@ -51,6 +56,7 @@ export class SummaryComponent implements OnInit {
   submitOrder(): void {
     const order: Order = new Order();
     order.addresses = this.orderStage$.addresses;
+    order.addresses = this.createAddresses();
     order.orderedProducts = this.orderedProducts;
     order.paymentId = this.orderStage$.payment.id;
     order.shipmentId = this.orderStage$.shipment.id;
@@ -58,4 +64,32 @@ export class SummaryComponent implements OnInit {
     console.log(order);
     this.orderService.postOrder(order).subscribe();
   }
+
+  private createAddresses(): Address[] {
+    const addresses: Address[] = this.orderStage$.addresses;
+    const inpost: Inpost = this.orderStage$.inpost;
+    if (inpost !== {} as Inpost) {
+      const address: Address = new Address();
+      address.firstName = 'Parcel locker';
+      address.lastName = inpost.lockerName;
+      address.email = 'inpost@inpost.com';
+      address.phone = '722444000';
+      address.street = inpost.street;
+      address.apartmentNumber = inpost.buildingNumber;
+      address.zipCode = inpost.zipCode;
+      address.city = inpost.city;
+      address.description = inpost.description;
+      address.contactType = 'DELIVERY';
+      addresses.push(address);
+    }
+    console.log(addresses);
+    return addresses;
+  }
+
+  private checkIfParcelLocker(data: OrderStage): void {
+    if (data.shipment.shipmentMethod === 'Parcel locker'){
+      this.isParcelLocker = true;
+    }
+  }
+
 }
