@@ -49,7 +49,7 @@
     <app-shipment></app-shipment>
   </div>
   <div class="buttons">
-    <button class="btn-back" type="button" (click)="back()">back</button>
+    <button class="btn-back" type="button" routerLink="/">back</button>
     <button
       [ngClass]="{'btn-next': orderStage$.payment && orderStage$.shipment, 'btn-non-active':
       !(orderStage$?.payment && orderStage$?.shipment?.shipmentMethod)}"
