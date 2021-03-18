@@ -21,8 +21,8 @@
         </div>
         <div class="user-submenu" *ngIf="isLoggedIn">
           <ul>
-            <li *ngIf="userRole === 'ROLE_ADMIN'"><a (click)="goToAdminPanel()">Admin panel</a></li>
-            <li><a (click)="goToUserProfile()">User Profile</a></li>
+            <li *ngIf="userRole === 'ROLE_ADMIN'"><a routerLink="/admin">Admin panel</a></li>
+            <li><a routerLink="/user">User Profile</a></li>
             <li><a (click)="logout()">Logout</a></li>
           </ul>
         </div>

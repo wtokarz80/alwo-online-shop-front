@@ -11,6 +11,10 @@ import {ConfirmationComponent} from './confirmation/confirmation.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import {ContactPageComponent} from './contact-page/contact-page.component';
 import {InpostComponent} from './inpost/inpost.component';
+import {UserPanelComponent} from './user-panel/user-panel.component';
+import {AdminPanelComponent} from './admin-panel/admin-panel.component';
+import {AuthGuard} from './auth/auth.guard';
+import {AdminAuthGuard} from './auth/admin-auth.guard';
 
 const routes: Routes = [
   {path: '', component: HomePageComponent},
@@ -25,6 +29,8 @@ const routes: Routes = [
   {path: 'books', component: MainComponent},
   {path: 'product/:id', component: ProductDetailsComponent},
   {path: 'contact', component: ContactPageComponent},
+  {path: 'user',  loadChildren: () => import('./profile/profile.module').then(m => m.ProfileModule), canActivate: [AuthGuard]},
+  {path: 'admin', component: AdminPanelComponent, canActivate: [AdminAuthGuard]},
 ];
 
 @NgModule({

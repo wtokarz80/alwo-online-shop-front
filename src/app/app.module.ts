@@ -29,6 +29,10 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { InpostComponent } from './inpost/inpost.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { OrdersComponent } from './orders/orders.component';
+import {ProfileModule} from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +56,9 @@ import { InpostComponent } from './inpost/inpost.component';
     FooterComponent,
     HomePageComponent,
     ContactPageComponent,
-    InpostComponent
+    InpostComponent,
+    AdminPanelComponent,
+
 
   ],
     imports: [
@@ -64,7 +70,8 @@ import { InpostComponent } from './inpost/inpost.component';
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
       FormsModule,
-      NgxPaginationModule
+      NgxPaginationModule,
+      ProfileModule
     ],
   providers: [
     {
