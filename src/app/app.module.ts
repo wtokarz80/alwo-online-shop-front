@@ -29,6 +29,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { InpostComponent } from './inpost/inpost.component';
+import { SearchInputComponent } from './search-input/search-input.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { InpostComponent } from './inpost/inpost.component';
     FooterComponent,
     HomePageComponent,
     ContactPageComponent,
-    InpostComponent
+    InpostComponent,
+    SearchInputComponent
 
   ],
     imports: [
