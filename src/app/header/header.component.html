@@ -6,8 +6,7 @@
       <p>BOOKSTORE</p>
     </div>
     <div class="search-wrapper">
-      <label for="title"></label>
-      <input id="title" name="title" type="text" placeholder="search..."/>
+      <app-search-input [placeholder]="'Search...'" (setValue)="search($event)"></app-search-input>
     </div>
 
     <div class="user-wrapper">
