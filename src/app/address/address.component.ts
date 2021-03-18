@@ -110,16 +110,9 @@ export class AddressComponent implements OnInit, OnDestroy {
       address.city = formGroup.get('city').value;
       address.description = formGroup.get('description').value;
       address.contactType = formGroup.get('contactType').value;
-      if (this.orderStage.addresses && formGroup.get('firstName').value !== 'Parcel locker'
-        && formGroup.get('firstName').value !== '' && this.orderStage.addresses.length < 2){
-        this.orderStage.addresses.push(address);
-      }
-      else if (!this.orderStage.addresses){
-        this.addresses.push(address);
-        this.orderStage.addresses = this.addresses;
-      }
+      this.addresses.push(address);
     }
-    // console.log({...this.nestedForm.value});
+    this.orderStage.addresses = this.addresses;
     this.orderService.setState(this.orderStage);
     console.log(this.orderStage);
   }
@@ -130,7 +123,6 @@ export class AddressComponent implements OnInit, OnDestroy {
       this.addAddress();
     }
     for (let i = 0; i < addresses.length; i++){
-      // if (!(addresses[i].firstName === 'Parcel locker')){
         this.addressArray.controls[i].get('firstName').setValue(addresses[i].firstName);
         this.addressArray.controls[i].get('lastName').setValue(addresses[i].lastName);
         this.addressArray.controls[i].get('email').setValue(addresses[i].email);
@@ -141,7 +133,6 @@ export class AddressComponent implements OnInit, OnDestroy {
         this.addressArray.controls[i].get('city').setValue(addresses[i].city);
         this.addressArray.controls[i].get('description').setValue(addresses[i].description);
         this.addressArray.controls[i].get('contactType').setValue(addresses[i].contactType);
-      // }
     }
   }
 

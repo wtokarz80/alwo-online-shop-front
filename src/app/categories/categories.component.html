@@ -1,4 +1,4 @@
-<header class="header">Book categories</header>
+<header class="header" (click)="redirectTo('/books')">Book categories</header>
 <hr class="header-separator">
 <ul>
   <li *ngFor="let category of categories; let last = last, let first = first"

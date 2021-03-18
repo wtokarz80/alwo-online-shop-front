@@ -23,6 +23,10 @@ export class ProductService {
       this.params().subscribe();
   }
 
+  public clearSelectedCategory(): void {
+    this.selectedCategory = null;
+  }
+
   public getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(`${environment.API_URL}/products`).pipe(
       tap(products => this.products = products)

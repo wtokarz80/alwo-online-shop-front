@@ -64,9 +64,9 @@ export class BasketComponent implements OnInit {
     this.basketService.removeAllFromBasket();
   }
 
-  public back(): void {
-    this.location.back();
-  }
+  // public back(): void {
+  //   this.location.back();
+  // }
 
   onShipment(shipment: Shipment): void {
     this.shipmentPrice = shipment.shipmentCost;

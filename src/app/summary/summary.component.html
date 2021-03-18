@@ -31,17 +31,29 @@
     <div class="methods">
       <header class="header">Chosen payment method</header>
       <div class="payment-wrapper">
-        <img [src]="'/assets/payment/' + orderStage$.payment.url" class="img">
-        <p class="payment-name">{{ orderStage$.payment.paymentMethod }}</p>
-        <p class="payment-desc">{{ orderStage$.payment.description }}</p>
+        <img [src]="'/assets/payment/' + orderStage$?.payment.url" class="img">
+        <p class="payment-name">{{ orderStage$?.payment.paymentMethod }}</p>
+        <p class="payment-desc">{{ orderStage$?.payment.description }}</p>
       </div>
 
       <header class="header">Chosen a shipping method</header>
-      <div class="payment-wrapper">
-        <img [src]="'/assets/shipment/' + orderStage$.shipment.url" class="img">
-        <p class="payment-name">{{ orderStage$.shipment.shipmentMethod }}</p>
-        <p class="payment-desc">{{ orderStage$.shipment.description }}</p>
+      <div class="payment-wrapper" *ngIf="!isParcelLocker; else inpost">
+        <img [src]="'/assets/shipment/' + orderStage$?.shipment.url" class="img">
+        <p class="payment-name">{{ orderStage$?.shipment.shipmentMethod }}</p>
+        <p class="payment-desc">{{ orderStage$?.shipment.description }}</p>
       </div>
+      <ng-template #inpost>
+        <div class="inpost-wrapper">
+          <img [src]="'/assets/shipment/' + orderStage$?.shipment.url" class="img">
+          <div class="inpost-data">
+            <p class="inpost-name">{{ orderStage$?.shipment?.shipmentMethod }}</p>
+            <p class="inpost-street">{{ orderStage$?.inpost?.street }} {{orderStage$?.inpost?.buildingNumber}}</p>
+            <p class="inpost-city">{{orderStage$?.inpost?.zipCode}} {{ orderStage$?.inpost?.city }}</p>
+            <!--          <p class="payment-desc">{{ orderStage?.shipment.description }}</p>-->
+          </div>
+        </div>
+      </ng-template>
+
     </div>
 
     <div class="summary-wrapper">
@@ -66,7 +78,7 @@
   <div class="address-item" *ngFor="let address of orderStage$?.addresses">
     <p class="header">Contact details of {{address.contactType}} address</p>
     <div class="data-wrapper">
-      <div class="address-left" *ngIf="address.firstName !== 'Parcel locker'">
+      <div class="address-left">
         <p class="data">First name:</p>
         <p class="data">Last name:</p>
         <p class="data">E-mail:</p>
