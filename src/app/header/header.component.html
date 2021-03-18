@@ -39,7 +39,8 @@
   <nav class="menu-bar">
     <ul>
       <li><a routerLink="/" routerLinkActive="active">Home</a> </li>
-      <li><a routerLink="/books" routerLinkActive="active">Books</a>
+<!--      <li><a routerLink="/books" routerLinkActive="active">Books</a>-->
+      <li><a routerLink="/books" (click)="redirectTo('/books')" routerLinkActive="active">Books</a>
         <div class="sub-menu-1">
           <ul>
             <li class="hover-me"><a href="#"><span class="fa-angle-right">Category-1 ></span></a>

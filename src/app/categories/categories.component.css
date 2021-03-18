@@ -43,6 +43,6 @@ ul {
   font-size: 18px;
 }
 
-.category-item:hover {
+.category-item:hover, .header:hover {
   cursor: pointer;
 }

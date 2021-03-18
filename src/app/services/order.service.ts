@@ -2,12 +2,9 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from 'rxjs';
 import {OrderStage} from '../models/orderStage';
 import {LocalStorageService} from 'ngx-webstorage';
-import {BasketProductDto} from '../models/basketProductDto';
 import {BasketService} from './basket.service';
-import {map, tap} from 'rxjs/operators';
-import {OrderedProduct} from '../models/orderedProduct';
+import {tap} from 'rxjs/operators';
 import {Order} from '../models/order';
-import {Address} from '../models/address';
 import {HttpClient} from '@angular/common/http';
 
 @Injectable({
@@ -16,7 +13,6 @@ import {HttpClient} from '@angular/common/http';
 export class OrderService {
 
   private orderStage$ = new BehaviorSubject<OrderStage>({} as OrderStage);
-  private orderedProducts: OrderedProduct[] = [];
 
   constructor(private localStorage: LocalStorageService,
               private basketService: BasketService,
@@ -40,30 +36,6 @@ export class OrderService {
     } else {
       this.orderStage$.next({} as OrderStage);
     }
-  }
-
-  // initOrder(): void {
-  //   this.fillOrderedProducts();
-  //   this.createOrderObject();
-  // }
-
-  public fillOrderedProducts(): void {
-    this.basketService.getBasketProducts$().subscribe(
-      (data: BasketProductDto[]) => {
-        data.forEach( product => {
-          const orderedProduct = new OrderedProduct(product.productId, product.quantity);
-          this.orderedProducts.push(orderedProduct);
-        });
-      });
-  }
-
-  public createOrderObject(): Order {
-    const order = new Order();
-    order.addresses = this.orderStage$.value.addresses;
-    order.orderedProducts = this.orderedProducts;
-    order.paymentId = this.orderStage$.value.payment.id;
-    order.shipmentId = this.orderStage$.value.shipment.id;
-    return order;
   }
 
   public clearLocalStorage(): void {

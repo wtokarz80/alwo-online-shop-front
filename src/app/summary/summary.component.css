@@ -195,13 +195,14 @@ display: flex;
   width: 69px;
   height: 47px;
   margin-right: 1em;
+  margin-left: 1em;
 }
 
 header {
   font-size: 1.2em;
   margin-top: 1em;
 }
-.payment-wrapper {
+.payment-wrapper, .inpost-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -211,6 +212,24 @@ header {
   width: 400px;
   border: 1px solid gray;
 }
+
+.payment-name {
+  margin-right: 1em;
+}
+
+.inpost-data {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.4em;
+}
+
+.inpost-name {
+  font-weight: bold;
+}
+
 
 .radio-wrapper {
   width: 7%;
