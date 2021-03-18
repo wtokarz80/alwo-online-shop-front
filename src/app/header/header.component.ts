@@ -3,7 +3,7 @@ import {AuthService} from '../auth/services/auth.service';
 import {Router} from '@angular/router';
 import {BasketService} from '../services/basket.service';
 import {BasketProductDto} from '../models/basketProductDto';
-import {filter} from 'rxjs/operators';
+import {ProductService} from '../services/product.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +19,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(private authService: AuthService,
               private router: Router,
-              private basketService: BasketService) { }
+              private basketService: BasketService,
+              private productsService: ProductService) { }
 
   ngOnInit(): void  {
     this.initStores();
@@ -44,5 +45,10 @@ export class HeaderComponent implements OnInit {
   private initStores(): void {
     this.basketService.loadBasketProducts$();
     this.authService.loadAuthData();
+  }
+
+  search($event: string): void {
+    this.productsService.setSearchValue($event);
+    this.router.navigateByUrl('/');
   }
 }
