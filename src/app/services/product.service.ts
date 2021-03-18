@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {Product} from '../models/product';
 import {map, tap} from 'rxjs/operators';
 import {environment} from '../../environments/environment';
@@ -15,7 +15,22 @@ export class ProductService {
   public products: Product[] = [];
   public product: Product;
   public page = 1;
+  private search$ = new BehaviorSubject('');
   constructor(public http: HttpClient) {
+  }
+
+  public setSearchValue(value: string): void {
+    this.search$.next(value);
+  }
+
+  public getSearchedProducts(): Observable<Product[]> {
+    return of(this.products)
+      .pipe(
+        map(products => products.filter(product =>
+          product.name.toLowerCase().includes(this.search$.getValue().toLowerCase()) ||
+          product.author.toLowerCase().includes(this.search$.getValue().toLowerCase())
+        ))
+      );
   }
 
   public onCategoryClick(chosenCategory: string): void {
@@ -57,4 +72,7 @@ export class ProductService {
     );
   }
 
+  isSearch$(): Observable<boolean> {
+    return this.search$.asObservable().pipe(map(value => !!value));
+  }
 }
