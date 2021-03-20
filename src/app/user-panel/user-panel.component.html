@@ -1,0 +1,19 @@
+<main class="container">
+
+  <aside class="aside-container">
+      <p class="user">USER ACCOUNT:<span class="user-name">  {{username}}</span></p>
+      <ul class="user-options">
+        <li><a routerLink="/user/orders">My orders</a></li>
+        <li><a href="/">My discounts</a></li>
+        <li><a href="/">Complaints</a></li>
+        <li><a href="/">Edit profile</a></li>
+      </ul>
+  </aside>
+
+  <section class="main-content">
+    <router-outlet></router-outlet>
+  </section>
+
+
+</main>
+

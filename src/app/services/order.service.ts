@@ -4,8 +4,11 @@ import {OrderStage} from '../models/orderStage';
 import {LocalStorageService} from 'ngx-webstorage';
 import {BasketService} from './basket.service';
 import {tap} from 'rxjs/operators';
-import {Order} from '../models/order';
+import {OrderData} from '../models/orderData';
 import {HttpClient} from '@angular/common/http';
+import {Category} from '../models/category';
+import {environment} from '../../environments/environment';
+import {Order} from '../models/order';
 
 @Injectable({
   providedIn: 'root'
@@ -43,9 +46,12 @@ export class OrderService {
     this.basketService.removeAllFromBasket();
   }
 
-  public postOrder(order: Order): Observable<Order> {
-    return this.http.post<Order>('http://localhost:8080/alwo/orders', order)
+  public postOrder(order: OrderData): Observable<OrderData> {
+    return this.http.post<OrderData>('http://localhost:8080/alwo/orders', order)
       .pipe(tap(console.log));
   }
 
+  public getUserOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(`${environment.API_URL}/orders`);
+  }
 }

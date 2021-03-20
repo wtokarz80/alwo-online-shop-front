@@ -30,10 +30,12 @@ export class InpostComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
 
-    // const map2 = easyPack.mapWidget('easypack-map', (point) => {
+    // const map2 = (window as any).easyPack.mapWidget('easypack-map', (point) => {
     //   const event = new CustomEvent('locker', {detail: point});
     //   window.dispatchEvent(event);
     // });
+
+
 
     window.addEventListener('locker', (e) => {
       console.log('locker details', e);

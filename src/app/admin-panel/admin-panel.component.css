@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.user {
+  font-size: 1.5em;
+  margin: 1em 0;
+}
+.user > span {
+
+}
+
+.user-name {
+  margin: 1em 0;
+}
+
+aside ul {
+  list-style: none;
+}
+
+aside ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  font-size: 1.2em;
+  line-height: 2em;
+}
+
+.main-content {
+  flex-grow: 1;
+  margin: 1em;
+}

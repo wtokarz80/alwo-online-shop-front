@@ -3,6 +3,8 @@ import {AuthService} from '../auth/services/auth.service';
 import {Router} from '@angular/router';
 import {BasketService} from '../services/basket.service';
 import {BasketProductDto} from '../models/basketProductDto';
+import {filter} from 'rxjs/operators';
+import {Category} from '../models/category';
 import {ProductService} from '../services/product.service';
 
 @Component({
@@ -12,6 +14,9 @@ import {ProductService} from '../services/product.service';
 })
 export class HeaderComponent implements OnInit {
 
+  categories: Category[];
+
+
   isLoggedIn: boolean;
   username: string;
   userRole: string;
@@ -20,13 +25,15 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService,
               private router: Router,
               private basketService: BasketService,
-              private productsService: ProductService) { }
+              public productService: ProductService) { }
 
   ngOnInit(): void  {
     this.initStores();
     this.authService.getIsLogged$().subscribe((data: boolean) => this.isLoggedIn = data);
     this.authService.username.subscribe((data: string) => this.username = data);
     this.authService.userRole.subscribe((data: string) => this.userRole = data);
+
+    this.productService.getAllCategories().subscribe(data =>  this.categories = data);
 
     this.basketService.getBasketProducts$().pipe(
     ).subscribe((data: BasketProductDto[]) => {
@@ -48,12 +55,19 @@ export class HeaderComponent implements OnInit {
   }
 
   search($event: string): void {
-    this.productsService.setSearchValue($event);
+    this.productService.setSearchValue($event);
     this.router.navigateByUrl('/');
   }
-  
+
   public redirectTo(uri: string): void{
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(() =>
       this.router.navigate([uri]));
   }
+
+  selectCategory(category: Category): void {
+    this.productService.onCategoryClick(category.categoryName);
+  }
+
 }
+
+

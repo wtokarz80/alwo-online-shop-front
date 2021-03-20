@@ -1,0 +1,51 @@
+<div class="categories">
+  <ul>
+    <li *ngFor="let category of categories">
+      <p (click)="deleteCategory(category); " class="category-item">{{ category.categoryName }}</p>
+    </li>
+  </ul>
+</div>
+<br><br>
+<div class="grid">
+  <form (ngSubmit)="send()" class="container" #form = "ngForm">
+    <div class="row">
+      <div class="input-field col s8">
+        <input [(ngModel)]="model.categoryName" id="name" name="name" type="text" required
+               minlength='2'
+               #name="ngModel"
+               (input)="printModel(name)"
+        />
+        <label for="name">Category name</label>
+        <ng-container *ngIf='name.invalid && name.touched'>
+          <div class='card-panel red darken-1' *ngIf='name.errors.required'>
+            Field required
+          </div>
+          <div class='card-panel red darken-1' *ngIf='name.errors.minlength'>
+            Text is to short
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s8">
+        <input [(ngModel)]="model.description" id="description" name="description" type="text" required
+               minlength='2'
+               #description="ngModel"
+               (input)="printModel(description)"
+        />
+        <label for="name">Description</label>
+        <ng-container *ngIf='description.invalid && description.touched'>
+          <div class='card-panel red darken-1' *ngIf='name.errors.required'>
+            Field required
+          </div>
+          <div class='card-panel red darken-1' *ngIf='name.errors.minlength'>
+            Text is to short
+          </div>
+        </ng-container>
+      </div>
+    </div>
+
+    <button class="btn-small" type="submit" [disabled]='form.invalid'>Send</button>
+    <button class="btn-small red" type="reset">Reset</button>
+  </form>
+</div>

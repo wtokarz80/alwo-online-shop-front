@@ -29,7 +29,12 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { ContactPageComponent } from './contact-page/contact-page.component';
 import { InpostComponent } from './inpost/inpost.component';
+import { UserPanelComponent } from './user-panel/user-panel.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { OrdersComponent } from './orders/orders.component';
 import { SearchInputComponent } from './search-input/search-input.component';
+import { EditCategoriesComponent } from './edit-categories/edit-categories.component';
+
 
 @NgModule({
   declarations: [
@@ -54,7 +59,11 @@ import { SearchInputComponent } from './search-input/search-input.component';
     HomePageComponent,
     ContactPageComponent,
     InpostComponent,
-    SearchInputComponent
+    AdminPanelComponent,
+    SearchInputComponent,
+    UserPanelComponent,
+    OrdersComponent,
+    EditCategoriesComponent
 
   ],
     imports: [

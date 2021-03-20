@@ -1,0 +1,28 @@
+<!--<div class="title">-->
+<!--  <div class=""></div>-->
+<!--  <h1 class="">My orders</h1>-->
+<!--  <div class=""></div>-->
+<!--</div>-->
+<table class="content-table">
+<thead>
+<tr>
+  <th class="product-field">Date</th>
+  <th class="price-field">Number</th>
+  <th class="quantity-field">Status</th>
+  <th class="value-field">Cost</th>
+  <th class="del-field">Details</th>
+
+</tr>
+</thead>
+
+<tbody>
+<tr *ngFor="let order of orders">
+  <td>{{order.purchaseDate}}</td>
+  <td>{{order.orderId}}</td>
+  <td>{{order.orderStatus}}</td>
+  <td>{{order.totalCost}} zł</td>
+  <td><button class="btn-view" type="button" (click)="viewDetail(order)">Details</button></td>
+
+</tr>
+</tbody>
+</table>

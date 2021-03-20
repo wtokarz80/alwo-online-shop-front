@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <img [src]="'/assets/homePage.jpg'" class="img">
+  <img [src]="'/assets/homePage.jpg'" class="img" *ngIf="!searchProducts">
   <p *ngIf="!searchProducts">Bestsellers</p>
   <hr class="pagination-separator"/>
 

@@ -5,7 +5,7 @@ import {BasketProductDto} from '../models/basketProductDto';
 import {map} from 'rxjs/operators';
 import {BasketService} from '../services/basket.service';
 import {OrderService} from '../services/order.service';
-import {Order} from '../models/order';
+import {OrderData} from '../models/orderData';
 import {OrderedProduct} from '../models/orderedProduct';
 import {Address} from '../models/address';
 import {Inpost} from '../models/inpost';
@@ -54,7 +54,7 @@ export class SummaryComponent implements OnInit {
 
 
   submitOrder(): void {
-    const order: Order = new Order();
+    const order: OrderData = new OrderData();
     order.addresses = this.orderStage$.addresses;
     order.addresses = this.createAddresses();
     order.orderedProducts = this.orderedProducts;
@@ -68,7 +68,7 @@ export class SummaryComponent implements OnInit {
   private createAddresses(): Address[] {
     const addresses: Address[] = this.orderStage$.addresses;
     const inpost: Inpost = this.orderStage$.inpost;
-    if (inpost !== {} as Inpost) {
+    if (inpost.lockerName) {
       const address: Address = new Address();
       address.firstName = 'Parcel locker';
       address.lastName = inpost.lockerName;

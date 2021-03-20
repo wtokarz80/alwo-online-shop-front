@@ -80,9 +80,11 @@
               <label>Address type</label>
               <select formControlName="contactType" name="contact-type"
                       [ngClass]="{'input': true, 'is-invalid': !group.get('contactType').valid && group.get('contactType').touched}">
+                <ng-container *ngIf="isParcelLocker; else invoice">
+<!--                  <option selected [value]="'INVOICE'">INVOICE</option>-->
+                  <option [ngValue]="addressTypes[0]">{{ addressTypes[0] }}</option>
+                </ng-container>
 
-                <option *ngIf="isParcelLocker; else invoice" selected [value]="'INVOICE'">INVOICE
-                </option>
                 <ng-template #invoice>
                   <option selected [ngValue]="null">Choose...</option>
                   <option *ngFor="let item of addressTypes" [value]="item">{{item}}</option>
