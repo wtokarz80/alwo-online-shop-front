@@ -32,7 +32,9 @@ import { InpostComponent } from './inpost/inpost.component';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { OrdersComponent } from './orders/orders.component';
-import {ProfileModule} from './profile/profile.module';
+import { SearchInputComponent } from './search-input/search-input.component';
+import { EditCategoriesComponent } from './edit-categories/edit-categories.component';
+
 
 @NgModule({
   declarations: [
@@ -58,7 +60,10 @@ import {ProfileModule} from './profile/profile.module';
     ContactPageComponent,
     InpostComponent,
     AdminPanelComponent,
-
+    SearchInputComponent,
+    UserPanelComponent,
+    OrdersComponent,
+    EditCategoriesComponent
 
   ],
     imports: [
@@ -70,8 +75,7 @@ import {ProfileModule} from './profile/profile.module';
       BrowserAnimationsModule,
       ToastrModule.forRoot(),
       FormsModule,
-      NgxPaginationModule,
-      ProfileModule
+      NgxPaginationModule
     ],
   providers: [
     {

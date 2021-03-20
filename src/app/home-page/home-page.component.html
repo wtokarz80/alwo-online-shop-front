@@ -1,10 +1,10 @@
 <div class="wrapper">
-  <img [src]="'/assets/homePage.jpg'" class="img">
-  <p>Bestsellers</p>
+  <img [src]="'/assets/homePage.jpg'" class="img" *ngIf="!searchProducts">
+  <p *ngIf="!searchProducts">Bestsellers</p>
   <hr class="pagination-separator"/>
 
   <div class="products-wrapper">
-    <app-product *ngFor="let product of productService.products"
+    <app-product *ngFor="let product of ((productService.isSearch$() | async) ? (productService.getSearchedProducts() | async) : productService.products)"
                  [product]=product
                  [routerLink]="'/product/' + product.id" ></app-product>
   </div>

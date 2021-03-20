@@ -7,8 +7,8 @@
   font-size: 1.5em;
   margin: 1em 0;
 }
-.user > span {
-
+.user-options li a:hover {
+  font-weight: bold;
 }
 
 .user-name {

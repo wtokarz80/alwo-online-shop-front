@@ -5,6 +5,10 @@
   text-transform: uppercase;
 }
 
+.user-name {
+  margin-left: 1em;
+}
+
 .del-field {
   width: 20%;
 }
@@ -43,7 +47,7 @@
 .content-table {
   width: 80%;
   min-width: 600px;
-  margin: 0 auto;
+  margin: 3em auto;
   border-collapse: collapse;
   border-radius: 5px 5px 0 0;
   overflow: hidden;

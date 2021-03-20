@@ -7,11 +7,13 @@ import {ProductService} from '../services/product.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+  searchProducts = false;
 
   constructor(public productService: ProductService) {
   }
 
   ngOnInit(): void {
+    this.productService.isSearch$().subscribe(isSearch => this.searchProducts = isSearch);
     this.productService.getProductsByCategory('Bestseller').subscribe();
   }
 
