@@ -46,6 +46,9 @@ export class ShipmentComponent implements OnInit {
     if (shipment.shipmentMethod !== 'Parcel locker'){
       this.orderStage$.inpost = new Inpost();
     }
+    // if (shipment.shipmentMethod !== this.selected){
+    //
+    // }
     this.orderService.setState(this.orderStage$);
   }
 

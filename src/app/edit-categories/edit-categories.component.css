@@ -1,0 +1,18 @@
+.main {
+  margin-left: 4em;
+}
+
+ul li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+}
+
+
+.create-category, .del-category {
+  text-transform: uppercase;
+
+  margin-bottom: 1em;
+}

@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {fromEvent, Observable, Subscription} from 'rxjs';
 import {Address} from '../models/address';
 import {distinctUntilChanged, map} from 'rxjs/operators';
@@ -6,13 +6,15 @@ import {OrderStage} from '../models/orderStage';
 import {OrderService} from '../services/order.service';
 import {Router} from '@angular/router';
 import {Inpost} from '../models/inpost';
+import { get } from 'scriptjs';
+declare var easyPack;
 
 @Component({
   selector: 'app-inpost',
   templateUrl: './inpost.component.html',
   styleUrls: ['./inpost.component.css']
 })
-export class InpostComponent implements OnInit, OnDestroy {
+export class InpostComponent implements OnDestroy, AfterViewInit {
 
   @ViewChild('map')
   map: ElementRef;
@@ -27,15 +29,12 @@ export class InpostComponent implements OnInit, OnDestroy {
               private router: Router){
   }
 
-
-  ngOnInit(): void {
-
-    // const map2 = (window as any).easyPack.mapWidget('easypack-map', (point) => {
-    //   const event = new CustomEvent('locker', {detail: point});
-    //   window.dispatchEvent(event);
-    // });
+  ngAfterViewInit(): void {
 
 
+    get('https://geowidget.easypack24.net/js/sdk-for-javascript.js', () => {
+      setTimeout(() => this.initMap(), 500);
+    });
 
     window.addEventListener('locker', (e) => {
       console.log('locker details', e);
@@ -56,26 +55,7 @@ export class InpostComponent implements OnInit, OnDestroy {
         return output;
       })
     );
-    // this.lockerSubscription = this.locker$.subscribe(result => {
-    //   if (this.orderStage.addresses){
-    //     for (let i = 0; i < this.orderStage.addresses.length; i++){
-    //       if (this.orderStage.addresses[i].firstName === 'Parcel locker'){
-    //         this.orderStage.addresses.splice(i, 1);
-    //       }
-    //     }
-    //     if (this.orderStage.addresses.length < 2) {
-    //       this.orderStage.addresses.push(result);
-    //     }
-    //   }
-    //
-    //   else {
-    //     this.addresses.push(result);
-    //     this.orderStage.addresses = this.addresses;
-    //   }
-    //   this.orderService.setState(this.orderStage);
-    //   console.log(this.orderStage);
-    //   this.router.navigateByUrl('/basket');
-    //   }
+
     this.lockerSubscription = this.locker$.subscribe(result => {
         if (this.orderStage) {
           this.orderStage.inpost = result;
@@ -85,8 +65,12 @@ export class InpostComponent implements OnInit, OnDestroy {
         this.router.navigateByUrl('/basket');
       }
     );
-
   }
+
+  // ngOnInit(): void {
+  //
+  //
+  // }
 
   ngOnDestroy(): void {
     if (this.lockerSubscription) {
@@ -104,4 +88,18 @@ export class InpostComponent implements OnInit, OnDestroy {
     output.description = '';
     return output;
   }
+
+  private initMap(): void {
+    console.log('map init');
+    easyPack.init({
+      mapType: 'osm',
+      searchType: 'osm',
+    });
+    const map2 = new easyPack.mapWidget('easypack-map', (point) => {
+      const event = new CustomEvent('locker', {detail: point});
+      window.dispatchEvent(event);
+    });
+  }
+
+
 }

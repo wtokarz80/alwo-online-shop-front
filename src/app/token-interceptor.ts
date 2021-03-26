@@ -38,8 +38,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
   }
 
-  private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler)
-    : Observable<HttpEvent<any>> {
+  private handleAuthErrors(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (!this.isTokenRefreshing) {
       this.isTokenRefreshing = true;
       this.refreshTokenSubject.next(null);
@@ -59,7 +58,7 @@ export class TokenInterceptor implements HttpInterceptor {
         take(1),
         switchMap((res) => {
           return next.handle(this.addToken(req,
-            this.authService.getJwtToken()))
+            this.authService.getJwtToken()));
         })
       );
     }

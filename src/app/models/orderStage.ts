@@ -9,5 +9,11 @@ export class OrderStage {
   constructor(public shipment: Shipment, public payment: Payment, public inpost: Inpost, public addresses: Address[]) {
 
   }
+}
+
+export enum ShipmentEnum {
+
+  CASH = 'Cash on delilvery',
+  LOCKER = 'Parcel'
 
 }

@@ -1,24 +1,19 @@
 <header class="header">Choose payment method</header>
 <!--<hr class="header-separator">-->
 <div class="payment-wrapper">
-  <li *ngFor="let payment of payments" (click)="onSelectPayment(payment)" class="payment">
-    <div class="radio-wrapper">
-      <div [ngClass]="{'radio': true, 'selected': selected === payment.paymentMethod}"></div>
-    </div>
-    <img [src]="'/assets/payment/' + payment.url" class="img">
-    <p class="payment-name">{{ payment.paymentMethod }}</p>
-    <p class="payment-desc">{{ payment.description }}</p>
-  </li>
-</div>
+  {{ShipmentEnum.CASH}}
+  <ng-container *ngFor="let payment of payments">
+    <li *ngIf="!(payment.paymentMethod === 'Cash on delivery' && orderStage$.shipment?.shipmentMethod ===
+    'Parcel locker')"
+        (click)="onSelectPayment(payment)"
+        class="payment">
+      <div class="radio-wrapper">
+        <div [ngClass]="{'radio': true, 'selected': selected === payment.paymentMethod}"></div>
+      </div>
+      <img [src]="'/assets/payment/' + payment.url" class="img">
+      <p class="payment-name">{{ payment.paymentMethod }}</p>
+      <p class="payment-desc">{{ payment.description }}</p>
+    </li>
+  </ng-container>
 
-<!--<header class="header">Choose a shipping method</header>-->
-<!--<div class="payment-wrapper">-->
-<!--  <li *ngFor="let shipment of shipments" (click)="onSelectShipment(shipment)" class="payment">-->
-<!--    <div class="radio-wrapper">-->
-<!--      <div [ngClass]="{'radio': true, 'selected': selected === shipment.shipmentMethod}"></div>-->
-<!--    </div>-->
-<!--    <img [src]="'/assets/shipment/' + shipment.url" class="img">-->
-<!--    <p class="payment-name">{{ shipment.shipmentMethod }}</p>-->
-<!--    <p class="payment-desc">{{ shipment.description }}</p>-->
-<!--  </li>-->
-<!--</div>-->
+</div>

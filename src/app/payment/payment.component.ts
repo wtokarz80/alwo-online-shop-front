@@ -2,7 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Payment} from '../models/payment';
 import {PaymentService} from '../services/payment.service';
 import {OrderService} from '../services/order.service';
-import {OrderStage} from '../models/orderStage';
+import {OrderStage, ShipmentEnum} from '../models/orderStage';
 
 @Component({
   selector: 'app-payment',
@@ -12,6 +12,7 @@ import {OrderStage} from '../models/orderStage';
 export class PaymentComponent implements OnInit {
 
 
+  ShipmentEnum = ShipmentEnum;
   payments: Payment[];
   status = false;
   selected: string;
@@ -21,9 +22,6 @@ export class PaymentComponent implements OnInit {
               public orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.paymentService.getAllPayments().subscribe(data => {
-      this.payments = data;
-    });
     this.orderService.getStage().subscribe(
       data => {
         this.orderStage$ = data;
@@ -32,10 +30,14 @@ export class PaymentComponent implements OnInit {
         }
       }
     );
+    this.paymentService.getAllPayments().subscribe(data => {
+      this.payments = data;
+    });
   }
 
   onSelectPayment(payment: Payment): void {
     this.orderStage$.payment = payment;
     this.orderService.setState(this.orderStage$);
   }
+
 }

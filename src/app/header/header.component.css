@@ -70,7 +70,7 @@ header {
   color: white;
 }
 
-.search-wrapper input {
+.search {
   border-radius: 50px;
   line-height: 2em;
   width: 25vw;

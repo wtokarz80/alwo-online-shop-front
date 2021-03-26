@@ -56,6 +56,7 @@ export class AddressComponent implements OnInit, OnDestroy {
   }
 
   private addAddressGroup(): FormGroup {
+
     return this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
@@ -67,7 +68,7 @@ export class AddressComponent implements OnInit, OnDestroy {
       zipCode: ['', Validators.required],
       city: ['', Validators.required],
       description: [],
-      contactType: [null, Validators.required]
+      contactType: ['', Validators.required]
     });
   }
 

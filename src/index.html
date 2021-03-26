@@ -9,20 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Overpass&display=swap" rel="stylesheet">
 
-  <script async src="https://geowidget.easypack24.net/js/sdk-for-javascript.js"></script>
-  <script type="text/javascript">
-    window.easyPackAsyncInit = function () {
-      easyPack.init({
-        mapType: 'osm',
-        searchType: 'osm',
-      });
-      var map = easyPack.mapWidget('easypack-map', function(point) {
-        // console.log(point);
-        const event = new CustomEvent('locker', {detail: point});
-        window.dispatchEvent(event);
-      });
-    };
-  </script>
+<!--  <script async src="https://geowidget.easypack24.net/js/sdk-for-javascript.js"></script>-->
+<!--  <script type="text/javascript">-->
+<!--    window.easyPackAsyncInit = function () {-->
+<!--      easyPack.init({-->
+<!--        mapType: 'osm',-->
+<!--        searchType: 'osm',-->
+<!--      });-->
+<!--      var map = easyPack.mapWidget('easypack-map', function(point) {-->
+<!--        // console.log(point);-->
+<!--        const event = new CustomEvent('locker', {detail: point});-->
+<!--        window.dispatchEvent(event);-->
+<!--      });-->
+<!--    };-->
+<!--  </script>-->
   <link rel="stylesheet" href="https://geowidget.easypack24.net/css/easypack.css"/>
 
 </head>

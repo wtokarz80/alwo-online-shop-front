@@ -87,7 +87,7 @@ export class SummaryComponent implements OnInit {
   }
 
   private checkIfParcelLocker(data: OrderStage): void {
-    if (data.shipment.shipmentMethod === 'Parcel locker'){
+    if (data.shipment && data.shipment.shipmentMethod === 'Parcel locker'){
       this.isParcelLocker = true;
     }
   }

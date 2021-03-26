@@ -70,7 +70,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.httpClient.post<LoginResponse>('http://localhost:8080/api/auth/refresh/token',
+    return this.httpClient.post<LoginResponse>('http://localhost:8080/alwo/auth/refresh/token',
       this.getRefreshTokenPayload())
       .pipe(tap(response => {
         this.localStorage.clear('authenticationToken');

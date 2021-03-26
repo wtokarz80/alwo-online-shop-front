@@ -100,7 +100,7 @@
           <div class="control-buttons">
             <header class="header" *ngIf="!isParcelLocker">
               Add address<button class="btn-add" type="button"
-                                                       (click)="addAddress()">+
+                                                       (click)="addAddress(group.get('contactType').value)">+
             </button></header>
 
             <header class="header" *ngIf="addressArray.length > 1">Remove address<button
